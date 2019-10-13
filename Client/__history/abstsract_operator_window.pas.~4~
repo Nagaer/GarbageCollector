@@ -1,0 +1,66 @@
+unit abstsract_operator_window;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdBaseComponent, IdComponent, IdUDPBase,
+  IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, sysutils;
+
+type
+  TForm_abstract_operator = class(TForm)
+    IdUDPServer1: TIdUDPServer;
+    procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
+      const AData: TIdBytes; ABinding: TIdSocketHandle);
+
+  protected
+    order_list : TList<TOrder_Interface>;
+    procedure update_orders;
+    procedure update_drivers;
+    procedure update_venceles;
+
+    procedure add_order();virtual;abstract;
+    procedure add_diver();virtual;abstract;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_abstract_operator: TForm_abstract_operator;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm_abstract_operator.update_orders;
+begin
+
+end;
+
+procedure TForm_abstract_operator.update_drivers;
+begin
+
+end;
+
+procedure TForm_abstract_operator.update_venceles;
+begin
+
+end;
+procedure TForm_abstract_operator.IdUDPServer1UDPRead(
+  AThread: TIdUDPListenerThread; const AData: TIdBytes;
+  ABinding: TIdSocketHandle);
+  var
+    recieve : string;
+begin
+  recieve := bytesToString(AData);
+  case recieve[1] of
+  '1' : update_orders;
+  '2' : update_drivers;
+  '3' : update_venceles;
+  end;
+end;
+
+end.

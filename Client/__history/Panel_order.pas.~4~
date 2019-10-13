@@ -1,0 +1,42 @@
+unit Panel_order;
+
+interface
+ uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface,Order_class;
+
+type TPanel_order = Class(TPanel{,TOrder_Interface})
+  private
+  order : TOrder;
+  procedure put_details;
+  public
+    constructor Create(AOwner: TComponent); override;
+    destructor Destroy; override;
+    procedure update;
+End;
+
+implementation
+
+procedure TPanel_order.put_details;
+begin
+
+end;
+
+constructor TPanel_order.Create(AOwner: TComponent);
+begin
+  inherited;
+
+  // Put here order details
+  put_details;
+end;
+
+destructor TPanel_order.Destroy;
+begin
+  inherited;
+end;
+
+procedure TPanel_order.update;
+begin
+   put_details;
+end;
+
+end.

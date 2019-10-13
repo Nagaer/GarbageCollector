@@ -1,0 +1,36 @@
+object dm: Tdm
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 214
+  Width = 480
+  object IBDatabase1: TIBDatabase
+    DatabaseName = '192.168.43.115:C:\Users\Ibrag\Desktop\Delphi\FREIGHT_TAXI.FDB'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey')
+    LoginPrompt = False
+    ServerType = 'IBServer'
+    Left = 168
+    Top = 64
+  end
+  object IBTransaction1: TIBTransaction
+    DefaultDatabase = IBDatabase1
+    Left = 256
+    Top = 72
+  end
+  object TOrders: TIBTable
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    BufferChunks = 1000
+    CachedUpdates = False
+    TableName = 'GARAGE'
+    UniDirectional = False
+    Left = 384
+    Top = 96
+  end
+  object DataSetProvider1: TDataSetProvider
+    DataSet = TOrders
+    Left = 328
+    Top = 152
+  end
+end

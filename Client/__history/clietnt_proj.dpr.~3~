@@ -1,0 +1,16 @@
+program clietnt_proj;
+
+uses
+  Vcl.Forms,
+  operator_window in 'operator_window.pas' {operator_form},
+  login_window in 'login_window.pas' {Login_Form};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(Toperator_form, operator_form);
+  Application.CreateForm(TLogin_Form, Login_Form);
+  Application.Run;
+end.

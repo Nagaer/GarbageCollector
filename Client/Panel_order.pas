@@ -2,9 +2,9 @@ unit Panel_order;
 
 interface
  uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface;
+  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface;
 
-type TPanel_order = Class(TPanel,TOrder_Interface)
+type TPanel_order = Class(TPanel,TOrder_Interface,IInterface)
   private
   order : TOrder;
   procedure put_details;
@@ -13,8 +13,13 @@ type TPanel_order = Class(TPanel,TOrder_Interface)
   public
   function get_id : integer;
   function get_status : integer;
+
   procedure update_order(updated_order : TOrder);
   procedure destroy_from_interface;
+  procedure set_driver(id_driver: integer);
+
+
+  function get_driver_id : integer;
 
 
   constructor Create(AOwner: TComponent;Porder : TOrder);
@@ -46,15 +51,24 @@ begin
   destroy;
 end;
 
-
+procedure TPanel_order.set_driver(id_driver : Integer);
+begin
+    order.update_driver(id_driver);
+    put_details;
+end;
 // end From iterface---------------------------------
 
 procedure TPanel_order.put_details;
 begin
-     caption := intTostr(order.get_id) + intTostr(order.get_status);
+     caption := 'id: '+ intTostr(order.get_id) + ' st: ' + intTostr(order.get_status)
+     + ' Dr id' + intToStr(order.get_driver_id);
 end;
 
 
+function TPanel_order.get_driver_id : integer;
+begin
+  get_driver_id :=  order.get_driver_id;
+end;
 
 
 
@@ -63,6 +77,9 @@ begin
   inherited Create(AOwner);
   order := Porder;
 
+  dragMode :=  dmAutomatic;
+  //onDragOver :=
+
   // Put here order details
   put_details;
 end;
@@ -70,6 +87,7 @@ end;
 destructor TPanel_order.Destroy;
 begin
   order.Destroy;
+  parent := nil;
   inherited;
 end;
 

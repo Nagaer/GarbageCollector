@@ -7,12 +7,18 @@ interface
   private
     id : integer;
     status : integer;
+    driver_id : integer;
+    procedure push;
   public
     constructor Create(row : TIBTable);
-    procedure Edit(P_id: integer);
     destructor Destroy;
+    procedure Edit(P_id: integer);
+    // Return driver id
+    procedure update_driver(id_driver : integer);
     function get_id : integer;
     function get_status : integer;
+    function get_driver_id : integer;
+
 
   End;
 implementation
@@ -26,7 +32,20 @@ function TOrder.get_status ;
 begin
    get_status := status;
 end;
+
+function TOrder.get_driver_id;
+begin
+  get_driver_id := driver_id;
+end;
 constructor TOrder.Create(row : TIBTable);
+begin
+    id := row.FieldByName('ID').AsInteger;
+    status := row.FieldByName('STATUS').AsInteger;
+    driver_id := row.FieldByName('WHO_DRIVER').AsInteger;
+end;
+
+
+destructor TOrder.Destroy;
 begin
 
 end;
@@ -36,10 +55,27 @@ begin
   id := p_id;
 end;
 
-destructor TOrder.Destroy;
+procedure TOrder.update_driver(id_driver : integer);
 begin
-
+     driver_id := id_driver;
+   push;
 end;
 
+procedure TOrder.push;
+begin
+  // push himself to db
+     // Fill db procedure parametrs with form valut
+    dm.spEDIT_ORDER_SET_DRIVER.ParamByName('ID_ORDER').AsInteger := id;
+    dm.spEDIT_ORDER_SET_DRIVER.ParamByName('ID_DRIVER').AsInteger:= driver_id ;
+
+
+    // Execute the procedure
+    if not dm.spEDIT_ORDER_SET_DRIVER.Transaction.InTransaction then
+      dm.spEDIT_ORDER_SET_DRIVER.Transaction.StartTransaction;
+    dm.spEDIT_ORDER_SET_DRIVER.ExecProc;
+
+    dm.spEDIT_ORDER_SET_DRIVER.Transaction.Commit;
+    dm.open_all;
+end;
 
 end.

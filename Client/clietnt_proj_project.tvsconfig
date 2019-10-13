@@ -1,2 +1,10 @@
 <?xml version="1.0"?>
-<TgConfig Version="3" SubLevelDisabled="False" />
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.abstsract_operator_window" Type="System.String" Value="abstsract_operator_window" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.clietnt_proj" Type="System.String" Value="clietnt_proj" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.data_module" Type="System.String" Value="data_module" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Driver_class" Type="System.String" Value="Driver_class" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Human_class" Type="System.String" Value="Human_class" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.operator_window_inh" Type="System.String" Value="operator_window_inh" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Order_class" Type="System.String" Value="Order_class" Category="General" IsBrowsable="False" />
+</TgConfig>

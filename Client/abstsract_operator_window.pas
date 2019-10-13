@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdBaseComponent, IdComponent, IdUDPBase,
   IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, generics.collections, order_interface,data_module
-  ,order_class, Vcl.StdCtrls;
+  ,order_class, Vcl.StdCtrls,IBX.IBTable, driver_class,driver_interface,panel_driver,
+  Vcl.ExtCtrls;
 
 type
   TElem = (Order,Vencele,Driver);
@@ -14,19 +15,25 @@ type
     IdUDPServer1: TIdUDPServer;
     procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
       const AData: TIdBytes; ABinding: TIdSocketHandle);
+    procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);virtual;abstract;
+    procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);virtual;abstract;
 
   protected
     order_list : TList<TOrder_Interface>;
+    driver_list : TList<TDriver_interface>;
     procedure update_orders;
     procedure update_drivers;
     procedure update_venceles;
 
     procedure add(Porder:TOrder);overload;virtual;abstract;
+    procedure add(PDriver:TDriver);overload;virtual;abstract;
     procedure add();overload;virtual;abstract;
-    procedure delete(id : Integer; elem :Telem);virtual;abstract;
+    procedure update_interface(elem : TElem);virtual;abstract;
 
   private
     { Private declarations }
+    //procedure test_update_orders(Table : TibTable; List, queue : TList
   public
     { Public declarations }
   constructor Create(AOwner: TComponent); override;
@@ -58,7 +65,7 @@ begin
 
     for  i := 0 to count - 1 do    begin
 
-      j:=1;
+      j:=0;
       while ( j < queue.Count) and ( queue[j].get_id  <> dm.TOrders.FieldByName('ID').AsInteger )  do
          j := j+1;
       // if found order but status changed
@@ -70,33 +77,89 @@ begin
 
           queue.Delete(j);
       end
-      else // Order not found
+      else begin// Order not found
       // add it to list
       //Create new order
-      New_Order := TOrder.Create(dm.TOrders);
-      add(New_order);
-
+        New_Order := TOrder.Create(dm.TOrders);
+        add(New_order);
+      end;
       // end add order in list
 
       dm.TOrders.Next;
     end;
 
     // Delete orders wich not found in db
-    //for I := 0 to queue.Count do
-      //delete (queue[i].get_id,Order);
+
+    for i := 0 to queue.Count - 1 do begin
+      order_list.Remove(queue[i]);
+      queue[i].destroy_from_interface;
+    end;
+
 
     queue.Destroy;
+    update_interface(order);
 end;
 
 procedure TForm_abstract_operator.update_drivers;
+// Just the same code as update_orders :(
+var i,j,count : integer;
+   new_driver : TDriver;
+   queue : TList<TDriver_interface>;
 begin
+    // Refresh table
+    dm.TDrivers.Refresh;
 
+    // Get count
+    dm.TDrivers.Last;
+    count := dm.TDrivers.RecordCount;
+    dm.TDrivers.First;
+
+    // Copy TList to queue
+    queue := TList<TDriver_interface>.Create;
+    queue.InsertRange(0,driver_list);
+
+    for  i := 0 to count - 1 do    begin
+
+      j:=0;
+      while ( j < queue.Count) and ( queue[j].get_id  <> dm.TDrivers.FieldByName('ID').AsInteger )  do
+         j := j+1;
+      // if found order but status changed
+      if (j < queue.Count) then begin
+          if  (dm.TDrivers.FieldByName('STATUS').AsInteger <> queue[j].get_status ) then begin
+             new_driver := TDriver.Create(dm.TDrivers);
+             queue[j].update_driver(new_driver);
+          end;
+
+          queue.Delete(j);
+      end
+      else begin// Order not found
+      // add it to list
+      //Create new order
+        New_driver := TDriver.Create(dm.TDrivers);
+        add(New_driver);
+      end;
+      // end add order in list
+
+      dm.TDrivers.Next;
+    end;
+
+    // Delete orders wich not found in db
+
+    for i := 0 to queue.Count - 1 do begin
+      driver_list.Remove(queue[i]);
+      queue[i].destroy_from_interface;
+    end;
+
+
+    queue.Destroy;
+    update_interface(driver);
 end;
 
 procedure TForm_abstract_operator.update_venceles;
 begin
 
 end;
+
 procedure TForm_abstract_operator.IdUDPServer1UDPRead(
   AThread: TIdUDPListenerThread; const AData: TIdBytes;
   ABinding: TIdSocketHandle);
@@ -111,10 +174,14 @@ begin
   end;
 end;
 
+
+
+
 constructor TForm_abstract_operator.Create(AOwner: TComponent);
 begin
   inherited;
   order_list :=  TList<TOrder_Interface>.create;
+  driver_list := TList<TDriver_interface>.create;
 end;
 
 end.

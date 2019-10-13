@@ -4,18 +4,21 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBTable,
-  IBX.IBDatabase, Datasnap.Provider;
+  IBX.IBDatabase, Datasnap.Provider, IBX.IBStoredProc;
 
 type
   Tdm = class(TDataModule)
     IBDatabase1: TIBDatabase;
-    IBTransaction1: TIBTransaction;
-    Torder: TIBTable;
+    IBTransaction_read: TIBTransaction;
+    Torders: TIBTable;
+    TDrivers: TIBTable;
+    spEDIT_ORDER_SET_DRIVER: TIBStoredProc;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+  procedure open_all;
   end;
 
 var
@@ -29,7 +32,13 @@ implementation
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
+  open_all;
+end;
+
+procedure  Tdm.open_all;
+begin
   dm.TOrders.Open;
+  dm.TDrivers.Open;
 end;
 
 end.

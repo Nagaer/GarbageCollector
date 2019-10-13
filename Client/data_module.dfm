@@ -1,8 +1,8 @@
 object dm: Tdm
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 214
-  Width = 480
+  Height = 342
+  Width = 650
   object IBDatabase1: TIBDatabase
     Connected = True
     DatabaseName = 
@@ -13,24 +13,56 @@ object dm: Tdm
       'password=masterkey'
       'lc_ctype=WIN1251')
     LoginPrompt = False
-    DefaultTransaction = IBTransaction1
+    DefaultTransaction = IBTransaction_read
     ServerType = 'IBServer'
-    Left = 152
+    Left = 112
     Top = 80
   end
-  object IBTransaction1: TIBTransaction
+  object IBTransaction_read: TIBTransaction
+    Active = True
     DefaultDatabase = IBDatabase1
+    Params.Strings = (
+      'read_committed'
+      'no_rec_version')
     Left = 224
     Top = 88
   end
-  object Torder: TIBTable
+  object Torders: TIBTable
     Database = IBDatabase1
-    Transaction = IBTransaction1
+    Transaction = IBTransaction_read
     BufferChunks = 1000
     CachedUpdates = False
     TableName = 'ORDERS'
     UniDirectional = False
-    Left = 304
-    Top = 104
+    Left = 328
+    Top = 56
+  end
+  object TDrivers: TIBTable
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    TableName = 'WORKERS'
+    UniDirectional = False
+    Left = 328
+    Top = 136
+  end
+  object spEDIT_ORDER_SET_DRIVER: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    StoredProcName = 'EDIT_ORDER_SET_DRIVER'
+    Left = 296
+    Top = 232
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID_DRIVER'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID_ORDER'
+        ParamType = ptInput
+      end>
   end
 end

@@ -90,10 +90,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="operator_window.pas">
-            <Form>operator_form</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="login_window.pas">
             <Form>Login_Form</Form>
             <FormType>dfm</FormType>
@@ -110,9 +106,19 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="order_interface.pas"/>
-        <DCCReference Include="Unit1.pas">
-            <Form>Form_operator</Form>
+        <DCCReference Include="operator_window_inh.pas">
+            <Form>Form_inh_operator</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Driver_class.pas"/>
+        <DCCReference Include="Human_class.pas"/>
+        <DCCReference Include="Panel_driver.pas"/>
+        <DCCReference Include="driver_interface.pas"/>
+        <DCCReference Include="test_window.pas">
+            <Form>form_test</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <None Include="ModelSupport_clietnt_proj\default.txaPackage"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -138,6 +144,12 @@
                 <DeployFile LocalName="Win32\Debug\clietnt_proj.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>clietnt_proj.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="ModelSupport_clietnt_proj\default.txaPackage" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -842,6 +854,7 @@
             <Platforms>
                 <Platform value="Win32">True</Platform>
             </Platforms>
+            <ModelSupport>True</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

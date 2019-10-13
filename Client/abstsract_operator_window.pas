@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdBaseComponent, IdComponent, IdUDPBase,
   IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, generics.collections, order_interface,data_module
-  ,order_class;
+  ,order_class, Vcl.StdCtrls;
 
 type
   TElem = (Order,Vencele,Driver);
@@ -82,8 +82,8 @@ begin
     end;
 
     // Delete orders wich not found in db
-    for I := 0 to queue.Count do
-      delete (queue[i].get_id,Order);
+    //for I := 0 to queue.Count do
+      //delete (queue[i].get_id,Order);
 
     queue.Destroy;
 end;

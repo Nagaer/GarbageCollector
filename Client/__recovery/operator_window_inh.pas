@@ -18,10 +18,9 @@ type
     procedure Button_deleteClick(Sender: TObject);
   private
     { Private declarations }
-    //panel_order_list : TList<TPanel_order> ;
      procedure add(Porder:TOrder);override ;
      procedure add();override;
-     procedure delete(id : Integer; elem :Telem);override;
+     procedure update_interface(elem : TElem);override;
   public
     { Public declarations }
     constructor Create(AOwner: TComponent); override;
@@ -37,17 +36,12 @@ implementation
 procedure TForm_inh_operator.add(Porder:TOrder);
 var
   new_order_panel : TPanel_order;
-  i : integer;
 begin
     new_order_panel := TPanel_order.Create(Panel_orders,Porder);
+    // Add to panel childrens list
     new_order_panel.Parent := Panel_orders;
-
+    // Add to list of interfaces
     order_list.Add((new_order_panel as TOrder_Interface));
-    with Panel_orders do
-      for I := 0 to  ControlCount - 1 do begin
-        controls[i].Left := 0;
-        controls[i].Top := I * 100;
-      end;
 
 end;
 
@@ -68,32 +62,19 @@ begin
   update_orders;
 end;
 
-procedure TForm_inh_operator.delete(id: Integer; elem: TElem);
-var
-  i : integer;
-  candidate : TOrder_Interface ;
+
+
+procedure TForm_inh_operator.update_interface(elem : TElem);
+var i : integer;
 begin
-     if elem = driver then begin
-        candidate := order_list[0];
-        order_list.Delete(0);
-        candidate.destroy_from_interface;
-     end
-     else
-     if elem = order then begin
+    if elem = order then
+      with Panel_orders do
+      for I := 0 to  ControlCount - 1 do begin
+        controls[i].Left := 0;
+        controls[i].Top := I * 100;
+      end;
 
-       i := 1;
-       while (i <= order_list.Count) and (order_list[i].get_id <> id)  do
-        i:= i+1;
-        if (i <= order_list.Count )then begin
-            candidate := order_list[i];
-            order_list.Delete(i);
-            candidate.destroy_from_interface;
-        end;
-
-     end;
 end;
-
-
 
 constructor  TForm_inh_operator.Create(AOwner: TComponent);
 begin

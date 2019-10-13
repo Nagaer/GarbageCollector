@@ -23,7 +23,7 @@ type
 
     procedure add(Porder:TOrder);overload;virtual;abstract;
     procedure add();overload;virtual;abstract;
-    procedure delete(id : Integer; elem :Telem);virtual;abstract;
+    procedure update_interface(elem : TElem);virtual;abstract;
 
   private
     { Private declarations }
@@ -58,7 +58,7 @@ begin
 
     for  i := 0 to count - 1 do    begin
 
-      j:=1;
+      j:=0;
       while ( j < queue.Count) and ( queue[j].get_id  <> dm.TOrders.FieldByName('ID').AsInteger )  do
          j := j+1;
       // if found order but status changed
@@ -70,22 +70,27 @@ begin
 
           queue.Delete(j);
       end
-      else // Order not found
+      else begin// Order not found
       // add it to list
       //Create new order
-      New_Order := TOrder.Create(dm.TOrders);
-      add(New_order);
-
+        New_Order := TOrder.Create(dm.TOrders);
+        add(New_order);
+      end;
       // end add order in list
 
       dm.TOrders.Next;
     end;
 
     // Delete orders wich not found in db
-    //for I := 0 to queue.Count do
-      //delete (queue[i].get_id,Order);
+
+    for i := 0 to queue.Count - 1 do begin
+      order_list.Remove(queue[i]);
+      queue[i].destroy_from_interface;
+    end;
+
 
     queue.Destroy;
+    update_interface(order);
 end;
 
 procedure TForm_abstract_operator.update_drivers;

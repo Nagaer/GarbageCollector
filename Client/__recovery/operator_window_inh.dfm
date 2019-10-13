@@ -1,12 +1,16 @@
 inherited Form_inh_operator: TForm_inh_operator
   Caption = 'Form_inh_operator'
+  ClientHeight = 598
+  ClientWidth = 622
+  ExplicitWidth = 638
+  ExplicitHeight = 637
   PixelsPerInch = 96
   TextHeight = 13
   object Panel_orders: TPanel [0]
     Left = 304
     Top = 32
-    Width = 193
-    Height = 313
+    Width = 265
+    Height = 558
     Caption = 'Panel_orders'
     TabOrder = 0
   end

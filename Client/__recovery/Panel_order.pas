@@ -70,6 +70,7 @@ end;
 destructor TPanel_order.Destroy;
 begin
   order.Destroy;
+  parent := nil;
   inherited;
 end;
 

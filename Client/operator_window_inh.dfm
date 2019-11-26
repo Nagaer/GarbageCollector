@@ -2,37 +2,40 @@ inherited Form_inh_operator: TForm_inh_operator
   Caption = 'Form_inh_operator'
   ClientHeight = 598
   ClientWidth = 861
+  Menu = MainMenu1
   ExplicitWidth = 877
-  ExplicitHeight = 637
+  ExplicitHeight = 657
   PixelsPerInch = 96
   TextHeight = 13
   object Panel_orders: TPanel [0]
     Left = 600
-    Top = 32
+    Top = 0
     Width = 265
     Height = 558
     Caption = 'Panel_orders'
     TabOrder = 0
   end
-  object Button_update: TButton [1]
-    Left = 392
+  object Panel_drivers: TPanel [1]
+    Left = 1
     Top = 0
-    Width = 107
-    Height = 34
-    Caption = 'Button_update'
-    TabOrder = 1
-    OnClick = Button_updateClick
-  end
-  object Panel_drivers: TPanel [2]
-    Left = 8
-    Top = 32
     Width = 593
     Height = 558
     Caption = 'Panel_drivers'
-    TabOrder = 2
+    TabOrder = 1
   end
   inherited IdUDPServer1: TIdUDPServer
     Left = 184
     Top = 528
+  end
+  object MainMenu1: TMainMenu
+    Left = 296
+    Top = 216
+    object ADD_ORDER: TMenuItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1079#1072#1082#1072#1079
+    end
+    object MENU_UPDATE: TMenuItem
+      Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+      OnClick = MENU_UPDATEClick
+    end
   end
 end

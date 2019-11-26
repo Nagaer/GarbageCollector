@@ -7,14 +7,16 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient,abstsract_operator_window,order_class,
   generics.collections,panel_order,order_interface, IdUDPServer, IdGlobal,driver_class,panel_driver,
-  IdSocketHandle,driver_interface;
+  IdSocketHandle,driver_interface, Vcl.Menus;
 
 type
   TForm_inh_operator = class(TForm_abstract_operator)
     Panel_orders: TPanel;
-    Button_update: TButton;
     Panel_drivers: TPanel;
-    procedure Button_updateClick(Sender: TObject);
+    MainMenu1: TMainMenu;
+    ADD_ORDER: TMenuItem;
+    MENU_UPDATE: TMenuItem;
+    procedure MENU_UPDATEClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -63,15 +65,6 @@ end;
 procedure TForm_inh_operator.add;
 begin
 
-end;
-
-
-
-procedure TForm_inh_operator.Button_updateClick(Sender: TObject);
-begin
-  inherited;
-  update_orders;
-  update_drivers;
 end;
 
 
@@ -133,10 +126,17 @@ end;
 constructor  TForm_inh_operator.Create(AOwner: TComponent);
 begin
   inherited;
-  panel_orders.OnDragOver :=PanelDragOver;
+  panel_orders.OnDragOver := PanelDragOver;
   panel_orders.OnDragDrop := PanelDragDrop; 
 end;
 
+
+procedure TForm_inh_operator.MENU_UPDATEClick(Sender: TObject);
+begin
+  inherited;
+  update_orders;
+  update_drivers;
+end;
 
 procedure TForm_inh_operator.PanelDragDrop(Sender, Source: TObject; X,
   Y: Integer);

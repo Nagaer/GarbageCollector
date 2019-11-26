@@ -1,4 +1,4 @@
-unit operator_window;
+unit test_window;
 
 interface
 

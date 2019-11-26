@@ -2,7 +2,7 @@ object Login_Form: TLogin_Form
   Left = 0
   Top = 0
   Caption = 'Login_Form'
-  ClientHeight = 231
+  ClientHeight = 230
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -35,5 +35,14 @@ object Login_Form: TLogin_Form
     Height = 21
     TabOrder = 1
     Text = #1055#1072#1088#1086#1083#1100
+  end
+  object Button_log_in: TButton
+    Left = 192
+    Top = 152
+    Width = 121
+    Height = 49
+    Caption = #1042#1086#1081#1090#1080
+    TabOrder = 2
+    OnClick = Button_log_inClick
   end
 end

@@ -58,6 +58,7 @@ end;
 procedure TOrder.update_driver(id_driver : integer);
 begin
      driver_id := id_driver;
+     status := 0;
    push;
 end;
 
@@ -66,8 +67,8 @@ begin
   // push himself to db
      // Fill db procedure parametrs with form valut
     dm.spEDIT_ORDER_SET_DRIVER.ParamByName('ID_ORDER').AsInteger := id;
-    dm.spEDIT_ORDER_SET_DRIVER.ParamByName('ID_DRIVER').AsInteger:= driver_id ;
-
+    dm.spEDIT_ORDER_SET_DRIVER.ParamByName('ID_WORKERS').AsInteger:= driver_id ;
+    dm.spEDIT_ORDER_SET_DRIVER.ParamByName('NEW_STATUS').AsInteger:= status;
 
     // Execute the procedure
     if not dm.spEDIT_ORDER_SET_DRIVER.Transaction.InTransaction then

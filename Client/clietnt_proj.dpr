@@ -15,7 +15,8 @@ uses
   Human_class in 'Human_class.pas',
   Panel_driver in 'Panel_driver.pas',
   driver_interface in 'driver_interface.pas',
-  test_window in 'test_window.pas' {form_test};
+  test_window in 'test_window.pas' {form_test},
+  Manager_window in 'Manager_window.pas' {Form_manager};
 
 {$R *.res}
 
@@ -23,11 +24,13 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(Tform_test, form_test);
+  //Application.CreateForm(TLogin_Form, Login_Form);
+  //Application.CreateForm(TForm_manager, Form_manager);
+  //Application.CreateForm(Tform_test, form_test);
   //Application.CreateForm(Tform_operator, form_operator);
   Application.CreateForm(TForm_inh_operator, Form_inh_operator);
   //Application.CreateForm(Toperator_form, operator_form);
-  //Application.CreateForm(TLogin_Form, Login_Form);
+
   //Application.CreateForm(TForm_abstract_operator, Form_abstract_operator);
 
   Application.Run;

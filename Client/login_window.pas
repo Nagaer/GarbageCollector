@@ -11,6 +11,8 @@ type
     Edit_login: TEdit;
     Edit_password: TEdit;
     Label1: TLabel;
+    Button_log_in: TButton;
+    procedure Button_log_inClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,5 +25,22 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Manager_window;
+
+procedure TLogin_Form.Button_log_inClick(Sender: TObject);
+begin
+    // Send request to bd
+
+    // Got user role
+
+    // If user is manager
+    // open manager window
+    //Form_manager.create;
+    Form_manager.ShowModal;
+    // else open operator window
+end;
+
+
 
 end.

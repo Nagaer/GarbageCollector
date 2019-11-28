@@ -29,8 +29,13 @@ object Form_manager: TForm_manager
         Caption = #1052#1077#1085#1077#1076#1078#1077#1088
       end
     end
-    object N2: TMenuItem
+    object menu_distr_cars: TMenuItem
       Caption = #1088#1072#1089#1087#1088#1077#1076#1077#1083#1080#1090#1100' '#1074#1086#1076#1080#1090#1077#1083#1077#1081' '
+      OnClick = menu_distr_carsClick
+    end
+    object menu_orders: TMenuItem
+      Caption = #1047#1072#1082#1072#1079#1099
+      OnClick = menu_ordersClick
     end
   end
 end

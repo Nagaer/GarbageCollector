@@ -32,6 +32,7 @@ inherited Form_inh_operator: TForm_inh_operator
     Top = 216
     object ADD_ORDER: TMenuItem
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1079#1072#1082#1072#1079
+      OnClick = ADD_ORDERClick
     end
     object MENU_UPDATE: TMenuItem
       Caption = #1054#1073#1085#1086#1074#1080#1090#1100

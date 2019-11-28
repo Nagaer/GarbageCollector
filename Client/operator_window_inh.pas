@@ -17,14 +17,16 @@ type
     ADD_ORDER: TMenuItem;
     MENU_UPDATE: TMenuItem;
     procedure MENU_UPDATEClick(Sender: TObject);
+    procedure ADD_ORDERClick(Sender: TObject);
 
   private
     { Private declarations }
      procedure add(Porder:TOrder);override ;
      procedure add(Pdriver:TDriver);override ;
-     procedure add();override;
+     //procedure add();override;
      procedure update_interface(elem : TElem);override;
      procedure redraw;
+     procedure update;
 
       procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);override;
@@ -42,6 +44,14 @@ var
 implementation
 
 {$R *.dfm}
+
+uses add_order_window;
+
+procedure TForm_inh_operator.update;
+begin
+  update_orders;
+  update_drivers;
+end;
 
 procedure TForm_inh_operator.add(Porder:TOrder);
 var
@@ -62,12 +72,16 @@ begin
     driver_list.Add((new_driver_panel as TDriver_Interface));
 end;
 
-procedure TForm_inh_operator.add;
+
+
+
+
+procedure TForm_inh_operator.ADD_ORDERClick(Sender: TObject);
 begin
-
+  inherited;
+  form_add_order := TForm_add_order.Create(Application);
+  form_add_order.showmodal;
 end;
-
-
 
 procedure TForm_inh_operator.update_interface(elem : TElem);
 var i,j,buff_id : integer;
@@ -127,15 +141,15 @@ constructor  TForm_inh_operator.Create(AOwner: TComponent);
 begin
   inherited;
   panel_orders.OnDragOver := PanelDragOver;
-  panel_orders.OnDragDrop := PanelDragDrop; 
+  panel_orders.OnDragDrop := PanelDragDrop;
+  update;
 end;
 
 
 procedure TForm_inh_operator.MENU_UPDATEClick(Sender: TObject);
 begin
   inherited;
-  update_orders;
-  update_drivers;
+  update;
 end;
 
 procedure TForm_inh_operator.PanelDragDrop(Sender, Source: TObject; X,

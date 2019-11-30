@@ -22,7 +22,8 @@ uses
   Vehicle_class in 'Vehicle_class.pas',
   vehicle_interface in 'vehicle_interface.pas',
   Panel_vehicle in 'Panel_vehicle.pas',
-  date_picker_window in 'date_picker_window.pas' {Form_date_picker};
+  date_picker_window in 'date_picker_window.pas' {Form_date_picker},
+  User_class in 'User_class.pas';
 
 {$R *.res}
 
@@ -30,7 +31,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
-
   //Application.CreateForm(TForm_inh_operator, Form_inh_operator);
   //Application.CreateForm(TForm_add_order, Form_add_order);
   //Application.CreateForm(TForm_car_distributing, Form_car_distributing);

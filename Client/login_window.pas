@@ -45,6 +45,7 @@ begin
       Transaction.StartTransaction;
     ExecProc;
     Transaction.Commit;
+    dm.open_all;
     // if loggin successsed
     if ParamByName('OUT_SUCCESS').value = 1 then begin
         worker_id := ParamByName('OUT_WORKER_ID').value;
@@ -55,8 +56,16 @@ begin
 
           // If user is manager
           // open manager window
-          Form_manager := TForm_manager.create(APPLICATION);
-          Form_manager.ShowModal;
+          if  dm.user.get_role = manager then begin
+
+            Form_manager := TForm_manager.create(APPLICATION);
+            Form_manager.ShowModal;
+          end
+          else if dm.user.get_role = oper then begin
+             Form_manager := TForm_manager.create(APPLICATION);
+            Form_manager.ShowModal;
+          end;
+
           // else open operator window
     end
     else  // If login refused

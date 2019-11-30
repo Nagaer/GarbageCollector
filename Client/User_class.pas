@@ -1,7 +1,7 @@
 unit User_class;
 
 interface
-  uses Human_class,data_module;
+  uses Human_class;
  type TRole = (Manager, Oper);
  type
  TUser = Class(Human)

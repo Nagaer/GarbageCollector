@@ -34,8 +34,8 @@ begin
   //Application.CreateForm(TForm_inh_operator, Form_inh_operator);
   //Application.CreateForm(TForm_add_order, Form_add_order);
   //Application.CreateForm(TForm_car_distributing, Form_car_distributing);
-  //Application.CreateForm(TLogin_Form, Login_Form);
-  Application.CreateForm(TForm_manager, Form_manager);
+  Application.CreateForm(TLogin_Form, Login_Form);
+  //Application.CreateForm(TForm_manager, Form_manager);
   //Application.CreateForm(Tform_test, form_test);
   // Application.CreateForm(TForm_date_picker, Form_date_picker);
   //Application.CreateForm(Toperator_form, operator_form);

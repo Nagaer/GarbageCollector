@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, data_module,  User_class;
 
 type
   TLogin_Form = class(TForm)
@@ -29,16 +29,48 @@ implementation
 uses Manager_window;
 
 procedure TLogin_Form.Button_log_inClick(Sender: TObject);
+var
+worker_id,role : integer;
 begin
     // Send request to bd
 
-    // Got user role
+    with dm.spLogin do
+    begin
 
-    // If user is manager
-    // open manager window
-    //Form_manager.create;
-    Form_manager.ShowModal;
-    // else open operator window
+    ParamByName('IN_LOGIN').value :=  Edit_login.Text;
+    ParamByName('IN_PASSWORD').value := Edit_password.Text;
+
+    // Execute the procedure
+    if not Transaction.InTransaction then
+      Transaction.StartTransaction;
+    ExecProc;
+    Transaction.Commit;
+    // if loggin successsed
+    if ParamByName('OUT_SUCCESS').value = 1 then begin
+        worker_id := ParamByName('OUT_WORKER_ID').value;
+        role := ParamByName('OUT_ROLE').value;
+        dm.user := TUser.Create(worker_id,role);
+
+        // Got user role
+
+          // If user is manager
+          // open manager window
+          Form_manager := TForm_manager.create(APPLICATION);
+          Form_manager.ShowModal;
+          // else open operator window
+    end
+    else  // If login refused
+      begin
+        label1.Caption := 'Õ≈¬≈–Õ€… ÀŒ√»Õ »À» œ¿–ŒÀ‹';
+      end;
+    end;
+
+
+
+
+
+
+
 end;
 
 

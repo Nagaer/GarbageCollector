@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBTable,
-  IBX.IBDatabase, Datasnap.Provider, IBX.IBStoredProc, IBX.IBQuery;
+  IBX.IBDatabase, Datasnap.Provider, IBX.IBStoredProc, IBX.IBQuery, User_class;
 
 type
   Tdm = class(TDataModule)
@@ -18,11 +18,13 @@ type
     TNew_day_car_delivery: TIBTable;
     QDriver_id_from_vehicle_day: TIBQuery;
     spBegin_day_driver: TIBStoredProc;
+    spLogin: TIBStoredProc;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+  user : TUser;
   procedure open_all;
   end;
 

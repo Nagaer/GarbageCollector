@@ -19,6 +19,7 @@ object dm: Tdm
     Top = 80
   end
   object IBTransaction_read: TIBTransaction
+    Active = True
     DefaultDatabase = IBDatabase1
     Params.Strings = (
       'read_committed'
@@ -200,6 +201,39 @@ object dm: Tdm
       item
         DataType = ftInteger
         Name = 'ID_CAR'
+        ParamType = ptInput
+      end>
+  end
+  object spLogin: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    StoredProcName = 'LOGIN'
+    Left = 176
+    Top = 272
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'OUT_SUCCESS'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'OUT_ROLE'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'OUT_WORKER_ID'
+        ParamType = ptOutput
+      end
+      item
+        DataType = ftWideString
+        Name = 'IN_PASSWORD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftWideString
+        Name = 'IN_LOGIN'
         ParamType = ptInput
       end>
   end

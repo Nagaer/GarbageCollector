@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, user_class;
 
 type
   TForm_manager = class(TForm)
@@ -17,8 +17,10 @@ type
     menu_orders: TMenuItem;
     procedure menu_ordersClick(Sender: TObject);
     procedure menu_distr_carsClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject;pUser : TUser);
   private
     { Private declarations }
+    user : TUser;
   public
     { Public declarations }
   end;
@@ -33,6 +35,11 @@ implementation
 uses operator_window_inh, car_distributing_window;
 
 
+
+procedure TForm_manager.FormCreate(Sender: TObject; pUser : TUser);
+begin
+  user := pUser;
+end;
 
 procedure TForm_manager.menu_distr_carsClick(Sender: TObject);
 begin

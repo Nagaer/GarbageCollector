@@ -21,6 +21,7 @@ type
 
   private
     { Private declarations }
+
      procedure add(Porder:TOrder);override ;
      procedure add(Pdriver:TDriver);override ;
      //procedure add();override;
@@ -31,6 +32,9 @@ type
       procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);override;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);override;
+
+      procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
+      const AData: TIdBytes; ABinding: TIdSocketHandle);
 
 
   public
@@ -166,6 +170,20 @@ procedure TForm_inh_operator.PanelDragOver(Sender, Source: TObject; X,
   Y: Integer; State: TDragState; var Accept: Boolean);
 begin
      accept := (source is TPanel_order ){and  (sender is TPanel_driver)};
+end;
+
+procedure TForm_inh_operator.IdUDPServer1UDPRead(
+  AThread: TIdUDPListenerThread; const AData: TIdBytes;
+  ABinding: TIdSocketHandle);
+  var
+    recieve : string;
+begin
+  recieve := bytesToString(AData);
+  case recieve[1] of
+  '1' : update_orders;
+  '2' : update_drivers;
+  //'3' : update_vehicles(now);
+  end;
 end;
 
 end.

@@ -34,6 +34,9 @@ type
       State: TDragState; var Accept: Boolean);override;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);override;
 
+    procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
+      const AData: TIdBytes; ABinding: TIdSocketHandle);
+
   public
     { Public declarations }
 
@@ -173,5 +176,18 @@ begin
      accept := (source is TPanel_vehicle ){and  (sender is TPanel_driver)};
 end;
 
+procedure TForm_car_distributing.IdUDPServer1UDPRead(
+  AThread: TIdUDPListenerThread; const AData: TIdBytes;
+  ABinding: TIdSocketHandle);
+  var
+    recieve : string;
+begin
+  recieve := bytesToString(AData);
+  case recieve[1] of
+ // '1' : update_orders;
+  '2' : update_drivers;
+  '3' : update_vehicles(now);
+  end;
+end;
 
 end.

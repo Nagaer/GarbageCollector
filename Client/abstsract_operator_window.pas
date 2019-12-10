@@ -13,8 +13,6 @@ type
   TElem = (Order,Vehicle,Driver);
   TForm_abstract_operator = class(TForm)
     IdUDPServer1: TIdUDPServer;
-    procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
-      const AData: TIdBytes; ABinding: TIdSocketHandle);
     procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);virtual;abstract;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);virtual;abstract;
@@ -157,6 +155,7 @@ begin
     update_interface(driver);
 end;
 
+
 procedure TForm_abstract_operator.update_vehicles(date : TDate);
 var i,j,count : integer;
    new_vehicle : Tvehicle;
@@ -229,6 +228,7 @@ begin
     update_interface(vehicle);
 end;
 
+{
 procedure TForm_abstract_operator.IdUDPServer1UDPRead(
   AThread: TIdUDPListenerThread; const AData: TIdBytes;
   ABinding: TIdSocketHandle);
@@ -242,7 +242,7 @@ begin
   '3' : update_vehicles(now);
   end;
 end;
-
+}
 
 
 

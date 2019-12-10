@@ -15,14 +15,21 @@ object Login_Form: TLogin_Form
   TextHeight = 13
   object Label1: TLabel
     Left = 232
-    Top = 24
+    Top = 32
     Width = 28
     Height = 13
     Caption = #1042#1061#1054#1044
   end
+  object Label2: TLabel
+    Left = 72
+    Top = 32
+    Width = 31
+    Height = 13
+    Caption = #1040#1076#1088#1077#1089
+  end
   object Edit_login: TEdit
     Left = 192
-    Top = 64
+    Top = 67
     Width = 121
     Height = 21
     TabOrder = 0
@@ -44,5 +51,13 @@ object Login_Form: TLogin_Form
     Caption = #1042#1086#1081#1090#1080
     TabOrder = 2
     OnClick = Button_log_inClick
+  end
+  object Edit_adress: TEdit
+    Left = 40
+    Top = 67
+    Width = 121
+    Height = 21
+    TabOrder = 3
+    Text = #1040#1076#1088#1077#1089
   end
 end

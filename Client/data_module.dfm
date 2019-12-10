@@ -15,6 +15,7 @@ object dm: Tdm
     LoginPrompt = False
     DefaultTransaction = IBTransaction_read
     ServerType = 'IBServer'
+    TraceFlags = [tfQPrepare, tfQExecute, tfQFetch, tfStmt, tfTransact]
     Left = 112
     Top = 80
   end

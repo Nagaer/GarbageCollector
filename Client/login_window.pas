@@ -12,6 +12,8 @@ type
     Edit_password: TEdit;
     Label1: TLabel;
     Button_log_in: TButton;
+    Edit_adress: TEdit;
+    Label2: TLabel;
     procedure Button_log_inClick(Sender: TObject);
   private
     { Private declarations }
@@ -26,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-uses Manager_window;
+uses Manager_window, operator_window_inh;
 
 procedure TLogin_Form.Button_log_inClick(Sender: TObject);
 var
@@ -62,8 +64,8 @@ begin
             Form_manager.ShowModal;
           end
           else if dm.user.get_role = oper then begin
-             Form_manager := TForm_manager.create(APPLICATION);
-            Form_manager.ShowModal;
+             Form_inh_operator := TForm_inh_operator.create(APPLICATION);
+            Form_inh_operator.ShowModal;
           end;
 
           // else open operator window

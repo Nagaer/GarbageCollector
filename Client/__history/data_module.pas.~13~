@@ -11,7 +11,7 @@ type
     IBDatabase1: TIBDatabase;
     IBTransaction_read: TIBTransaction;
     Torders: TIBTable;
-    TWorkers: TIBTable;
+    TDrivers: TIBTable;
     spEDIT_ORDER_SET_DRIVER: TIBStoredProc;
     spAdd_order: TIBStoredProc;
     TVehicle: TIBTable;
@@ -19,7 +19,6 @@ type
     QDriver_id_from_vehicle_day: TIBQuery;
     spBegin_day_driver: TIBStoredProc;
     spLogin: TIBStoredProc;
-    QDrivers: TIBQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -46,12 +45,9 @@ end;
 procedure  Tdm.open_all;
 begin
   dm.TOrders.Open;
-  dm.TWorkers.Open;
+  dm.TDrivers.Open;
   dm.TVehicle.Open;
   dm.TNew_day_car_delivery.Open;
-
-   dm.Qdrivers.Close;
-   dm.QDrivers.Open;
 
   with   dm.QDriver_id_from_vehicle_day do begin
     ParamByName('IN_DATE').Value := now;

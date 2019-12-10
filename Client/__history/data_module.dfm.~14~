@@ -1,13 +1,13 @@
 object dm: Tdm
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 472
-  Width = 716
+  Height = 342
+  Width = 650
   object IBDatabase1: TIBDatabase
     Connected = True
     DatabaseName = 
-      '192.168.43.115:C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_T' +
-      'AXI_actual_changes.FDB'
+      'C:\Users\dupel\OneDrive\'#1056#1072#1073#1086#1095#1080#1081' '#1089#1090#1086#1083'\'#1055#1056#1054#1045#1050#1058' '#1044#1045#1051#1060#1048'\FREIGHT_TAXI_a' +
+      'ctual_changes.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -19,6 +19,7 @@ object dm: Tdm
     Top = 80
   end
   object IBTransaction_read: TIBTransaction
+    Active = True
     DefaultDatabase = IBDatabase1
     Params.Strings = (
       'read_committed'
@@ -36,7 +37,7 @@ object dm: Tdm
     Left = 328
     Top = 56
   end
-  object TWorkers: TIBTable
+  object TDrivers: TIBTable
     Database = IBDatabase1
     Transaction = IBTransaction_read
     BufferChunks = 1000
@@ -235,16 +236,5 @@ object dm: Tdm
         Name = 'IN_LOGIN'
         ParamType = ptInput
       end>
-  end
-  object QDrivers: TIBQuery
-    Database = IBDatabase1
-    Transaction = IBTransaction_read
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from workers where role_ = 2;')
-    Left = 224
-    Top = 176
   end
 end

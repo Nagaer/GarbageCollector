@@ -108,12 +108,13 @@ var i,j,count : integer;
    queue : TList<TDriver_interface>;
 begin
     // Refresh table
-    dm.TDrivers.Refresh;
+    dm.Qdrivers.Close;
+    dm.QDrivers.Open;
 
     // Get count
-    dm.TDrivers.Last;
-    count := dm.TDrivers.RecordCount;
-    dm.TDrivers.First;
+    dm.Qdrivers.Last;
+    count := dm.Qdrivers.RecordCount;
+    dm.Qdrivers.First;
 
     // Copy TList to queue
     queue := TList<TDriver_interface>.Create;
@@ -122,12 +123,12 @@ begin
     for  i := 0 to count - 1 do    begin
 
       j:=0;
-      while ( j < queue.Count) and ( queue[j].get_id  <> dm.TDrivers.FieldByName('ID').AsInteger )  do
+      while ( j < queue.Count) and ( queue[j].get_id  <> dm.Qdrivers.FieldByName('ID').AsInteger )  do
          j := j+1;
       // if found order but status changed
       if (j < queue.Count) then begin
           //if  (dm.TDrivers.FieldByName('STATUS').AsInteger <> queue[j].get_status ) then begin
-             new_driver := TDriver.Create(dm.TDrivers);
+             new_driver := TDriver.Create(dm.Qdrivers);
              queue[j].update_driver(new_driver);
           //end;
 
@@ -136,12 +137,12 @@ begin
       else begin// Order not found
       // add it to list
       //Create new order
-        New_driver := TDriver.Create(dm.TDrivers);
+        New_driver := TDriver.Create(dm.QDrivers);
         add(New_driver);
       end;
       // end add order in list
 
-      dm.TDrivers.Next;
+      dm.Qdrivers.Next;
     end;
 
     // Delete orders wich not found in db

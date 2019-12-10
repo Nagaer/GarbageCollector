@@ -36,7 +36,7 @@ object dm: Tdm
     Left = 328
     Top = 56
   end
-  object TWorkers: TIBTable
+  object TDrivers: TIBTable
     Database = IBDatabase1
     Transaction = IBTransaction_read
     BufferChunks = 1000

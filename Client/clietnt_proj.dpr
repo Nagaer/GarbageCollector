@@ -23,7 +23,12 @@ uses
   vehicle_interface in 'vehicle_interface.pas',
   Panel_vehicle in 'Panel_vehicle.pas',
   date_picker_window in 'date_picker_window.pas' {Form_date_picker},
-  User_class in 'User_class.pas';
+  User_class in 'User_class.pas',
+  data_module_add in 'data_module_add.pas' {dm_add: TDataModule},
+  add_car_window in 'add_car_window.pas' {form_Add_Car},
+  add_worker_window in 'add_worker_window.pas' {form_Add_Worker},
+  Colored_panel_class in 'Colored_panel_class.pas',
+  add_customer_window in 'add_customer_window.pas' {form_Add_customer};
 
 {$R *.res}
 
@@ -31,6 +36,13 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
+  Application.CreateForm(Tdm_add, dm_add);
+  //Application.CreateForm(Tform_Add_customer, form_Add_customer);
+  //Application.CreateForm(Tform_Add_Worker, form_Add_Worker);
+  //Application.CreateForm(Tform_Add_Driver, form_Add_Driver);
+  //Application.CreateForm(Tform_Add_Manager, form_Add_Manager);
+  //Application.CreateForm(Tform_Add_Operator, form_Add_Operator);
+  //Application.CreateForm(Tform_Add_Car, form_Add_Car);
   //Application.CreateForm(TForm_inh_operator, Form_inh_operator);
   //Application.CreateForm(TForm_add_order, Form_add_order);
   //Application.CreateForm(TForm_car_distributing, Form_car_distributing);

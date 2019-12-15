@@ -140,6 +140,24 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="User_class.pas"/>
+        <DCCReference Include="data_module_add.pas">
+            <Form>dm_add</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="add_car_window.pas">
+            <Form>form_Add_Car</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="add_worker_window.pas">
+            <Form>form_Add_Worker</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Colored_panel_class.pas"/>
+        <DCCReference Include="add_customer_window.pas">
+            <Form>form_Add_customer</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="ModelSupport_clietnt_proj\default.txaPackage"/>
         <None Include="ModelSupport_clietnt_proj\default.txvpck"/>
         <None Include="ModelSupport_clietnt_proj\abstsract_operator_window\default.txvpck"/>
@@ -314,13 +332,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_clietnt_proj\Order_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_clietnt_proj\Human_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_clietnt_proj\Human_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_clietnt_proj\Order_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

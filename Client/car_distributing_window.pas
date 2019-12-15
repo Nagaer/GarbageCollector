@@ -173,5 +173,4 @@ begin
      accept := (source is TPanel_vehicle ){and  (sender is TPanel_driver)};
 end;
 
-
 end.

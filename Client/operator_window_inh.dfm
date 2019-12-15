@@ -12,7 +12,9 @@ inherited Form_inh_operator: TForm_inh_operator
     Top = 0
     Width = 265
     Height = 558
-    Caption = 'Panel_orders'
+    Caption = #1055#1072#1085#1077#1083#1100' '#1079#1072#1082#1072#1079#1086#1074
+    Color = clGradientActiveCaption
+    ParentBackground = False
     TabOrder = 0
   end
   object Panel_drivers: TPanel [1]
@@ -20,7 +22,9 @@ inherited Form_inh_operator: TForm_inh_operator
     Top = 0
     Width = 593
     Height = 558
-    Caption = 'Panel_drivers'
+    Caption = #1055#1072#1085#1077#1083#1100' '#1074#1086#1076#1080#1090#1077#1083#1077#1081
+    Color = clGradientActiveCaption
+    ParentBackground = False
     TabOrder = 1
   end
   inherited IdUDPServer1: TIdUDPServer

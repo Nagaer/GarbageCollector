@@ -13,7 +13,8 @@ inherited Form_car_distributing: TForm_car_distributing
     Top = -8
     Width = 410
     Height = 470
-    Caption = 'Panel_driver'
+    Caption = #1055#1072#1085#1077#1083#1100' '#1079#1072#1082#1072#1079#1086#1074
+    ParentBackground = False
     TabOrder = 0
   end
   object Panel_vehicle: TPanel [1]
@@ -21,7 +22,7 @@ inherited Form_car_distributing: TForm_car_distributing
     Top = 0
     Width = 339
     Height = 454
-    Caption = 'Panel_vehicle'
+    Caption = #1055#1072#1085#1077#1083#1100' '#1084#1072#1096#1080#1085
     TabOrder = 1
   end
   object MainMenu1: TMainMenu

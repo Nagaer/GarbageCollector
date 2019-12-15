@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient,abstsract_operator_window,order_class,
   generics.collections,panel_order,order_interface, IdUDPServer, IdGlobal,driver_class,panel_driver,
-  IdSocketHandle,driver_interface, Vcl.Menus;
+  IdSocketHandle,driver_interface, Vcl.Menus, user_class, data_module, data_module_add;
 
 type
   TForm_inh_operator = class(TForm_abstract_operator)
@@ -31,6 +31,7 @@ type
       procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);override;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);override;
+    user : TUser;
 
 
   public
@@ -81,6 +82,17 @@ begin
   inherited;
   form_add_order := TForm_add_order.Create(Application);
   form_add_order.showmodal;
+  if form_add_order.ModalResult = mrOk then  begin
+      dm_add.add_order(dm.QCustomers.FieldByName('ID').Value,
+      StrtoInt(form_add_order.label_weight.Text),
+      dm.TAddress_In.FieldByName('ID').Value,
+      dm.TAddress_Out.FieldByName('ID').Value,
+      form_add_order.dtp_delivery.DateTime,
+      dm.user.get_id,
+      form_add_order.label_stevedore,
+      form_add_order.label_price);
+   end;
+
 end;
 
 procedure TForm_inh_operator.update_interface(elem : TElem);
@@ -120,6 +132,7 @@ begin
         with panel_orders do begin
           for I := 0 to  ControlCount - 1 do begin
             controls[i].Left := 0;
+            controls[i].Width := Panel_orders.Width;
             controls[i].Top := I * 50;
           end
         end;

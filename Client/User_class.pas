@@ -11,6 +11,7 @@ interface
        public
         constructor Create(p_id : integer; p_role : integer);
         function get_role : TRole;
+        function get_id : integer;
 
      End;
 implementation
@@ -39,6 +40,11 @@ end;
 function TUser.get_role;
 begin
   get_role := role;
+end;
+
+function TUser.get_id;
+begin
+  get_id := id;
 end;
 
 end.

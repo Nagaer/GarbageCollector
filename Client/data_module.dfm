@@ -5,9 +5,7 @@ object dm: Tdm
   Width = 716
   object IBDatabase1: TIBDatabase
     Connected = True
-    DatabaseName = 
-      '192.168.43.115:C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_T' +
-      'AXI_actual_changes.FDB'
+    DatabaseName = 'D:\Delphi Collector 2\FREIGHT_TAXI_actual_changes.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -19,6 +17,7 @@ object dm: Tdm
     Top = 80
   end
   object IBTransaction_read: TIBTransaction
+    Active = True
     DefaultDatabase = IBDatabase1
     Params.Strings = (
       'read_committed'
@@ -246,5 +245,65 @@ object dm: Tdm
       'select * from workers where role_ = 2;')
     Left = 224
     Top = 176
+  end
+  object QManagers: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from workers where role_ = 0;')
+    Left = 96
+    Top = 192
+  end
+  object QOperators: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from workers where role_ = 1;')
+    Left = 104
+    Top = 320
+  end
+  object QCustomers: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from customers;')
+    Left = 232
+    Top = 360
+  end
+  object TAddress_In: TIBTable
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    TableName = 'ADDRESS'
+    UniDirectional = False
+    Left = 448
+    Top = 376
+  end
+  object TAddress_Out: TIBTable
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    TableName = 'ADDRESS'
+    UniDirectional = False
+    Left = 576
+    Top = 384
+  end
+  object IBQuery1: TIBQuery
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    Left = 352
+    Top = 368
   end
 end

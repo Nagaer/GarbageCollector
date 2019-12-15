@@ -2,9 +2,9 @@ unit Panel_order;
 
 interface
  uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface;
+  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, colored_panel_class,Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface;
 
-type TPanel_order = Class(TPanel,TOrder_Interface,IInterface)
+type TPanel_order = Class(TColoredPanel,TOrder_Interface,IInterface)
   private
   order : TOrder;
   procedure put_details;
@@ -62,6 +62,15 @@ procedure TPanel_order.put_details;
 begin
      caption := 'id: '+ intTostr(order.get_id) + ' st: ' + intTostr(order.get_status)
      + ' Dr id' + intToStr(order.get_driver_id);
+     if (order.get_status = 2) then begin
+         color := RGB(250, 128, 114); //Salmon (Red)
+     end
+     else if (order.get_status = 1) then begin
+         color := RGB(240, 230, 140); //Khaki (Yellow)
+     end
+     else begin
+         color := RGB(124, 252, 0); //LawnGreen (Green)
+     end;
 end;
 
 

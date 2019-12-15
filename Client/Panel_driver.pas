@@ -2,15 +2,16 @@ unit Panel_driver;
 
 interface
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, driver_class,driver_interface;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class, driver_class,driver_interface;
 
 
 type TPanel_driver = Class(TPanel,TDriver_Interface,IInterface)
-  Panel_info: TPanel;
-  Panel_queue : TPanel;
+  Panel_info: TColoredPanel;
+  Panel_queue : TColoredPanel;
 
   private
   driver : TDriver;
+  const maxOrdersCount = 6;
   procedure put_details;
 
   // from interface
@@ -57,7 +58,9 @@ end;
 
 procedure TPanel_driver.put_details;
 begin
-     panel_info.caption := 'id: '+ intTostr(driver.get_id) + ' status: ' + intTostr(driver.get_status);
+     //panel_info.caption := 'id: '+ intTostr(driver.get_id) + ' status: ' + intTostr(driver.get_status);
+     panel_info.caption := driver.get_name + ' ' + driver.get_surname[1] + '.';
+     panel_info.Color := RGB(148, 0, 211); //DarkViolet (Purple)
 end;
 
 
@@ -70,10 +73,17 @@ procedure TPanel_driver.redraw;
 var
   i : integer;
 begin
-    with panel_queue  do
-      for I := 0 to ControlCount - 1 do begin
+    with panel_queue do
+      for i := 0 to ControlCount - 1 do begin
         controls[i].Top := 0;
-        controls[i].Left := controls[i].Width * I;
+        if ControlCount < maxOrdersCount then begin
+          controls[i].Width := trunc(Width * 0.9 / ControlCount);
+        end
+        else begin
+          controls[i].Width := trunc(Width / ControlCount);
+        end;
+        controls[i].Left := controls[i].Width * i;
+
       end;
 end;
 
@@ -90,7 +100,7 @@ begin
 
   width := p_info_width + p_queue_width;
   // Setup info panel
-  panel_info := TPanel.Create(self);
+  panel_info := TColoredPanel.Create(self);
   with panel_info do begin
     Parent := self;
     Top := 0;
@@ -101,7 +111,7 @@ begin
   end;
 
 
-  panel_queue := TPanel.Create(self);
+  panel_queue := TColoredPanel.Create(self);
   with panel_queue do begin
     Parent := self;
     Top := 0;

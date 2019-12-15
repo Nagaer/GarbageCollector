@@ -20,6 +20,12 @@ type
     spBegin_day_driver: TIBStoredProc;
     spLogin: TIBStoredProc;
     QDrivers: TIBQuery;
+    QManagers: TIBQuery;
+    QOperators: TIBQuery;
+    QCustomers: TIBQuery;
+    TAddress_In: TIBTable;
+    TAddress_Out: TIBTable;
+    IBQuery1: TIBQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -52,6 +58,10 @@ begin
 
    dm.Qdrivers.Close;
    dm.QDrivers.Open;
+   dm.QManagers.Close;
+   dm.QManagers.Open;
+   dm.QOperators.Close;
+   dm.QOperators.Open;
 
   with   dm.QDriver_id_from_vehicle_day do begin
     ParamByName('IN_DATE').Value := now;

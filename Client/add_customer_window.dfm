@@ -1,0 +1,116 @@
+object form_Add_customer: Tform_Add_customer
+  Left = 0
+  Top = 0
+  Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1079#1072#1082#1072#1079#1095#1080#1082#1072
+  ClientHeight = 389
+  ClientWidth = 611
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 69
+    Width = 93
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1092#1072#1084#1080#1083#1080#1102
+  end
+  object Label2: TLabel
+    Left = 24
+    Top = 117
+    Width = 64
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1080#1084#1103
+  end
+  object Label3: TLabel
+    Left = 24
+    Top = 170
+    Width = 90
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1090#1077#1083#1077#1092#1086#1085
+  end
+  object Label4: TLabel
+    Left = 168
+    Top = 71
+    Width = 76
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1072#1076#1088#1077#1089
+  end
+  object BitBtn1: TBitBtn
+    Left = 413
+    Top = 256
+    Width = 75
+    Height = 25
+    Kind = bkOK
+    NumGlyphs = 2
+    TabOrder = 0
+  end
+  object label_surname: TEdit
+    Left = 24
+    Top = 90
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    Text = #1060#1072#1084#1080#1083#1080#1103
+  end
+  object label_name: TEdit
+    Left = 24
+    Top = 136
+    Width = 121
+    Height = 21
+    TabOrder = 2
+    Text = #1048#1084#1103
+  end
+  object label_phone: TEdit
+    Left = 24
+    Top = 189
+    Width = 121
+    Height = 21
+    TabOrder = 3
+    Text = #1058#1077#1083#1077#1092#1086#1085
+  end
+  object DBGrid1: TDBGrid
+    Left = 168
+    Top = 90
+    Width = 320
+    Height = 120
+    DataSource = DataSource_address
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'CITY'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'STREET'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NUMBER_HOUSE'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'FLOOR_'
+        Visible = True
+      end>
+  end
+  object DataSource_address: TDataSource
+    DataSet = dm.TAddress_In
+    Left = 520
+    Top = 296
+  end
+end

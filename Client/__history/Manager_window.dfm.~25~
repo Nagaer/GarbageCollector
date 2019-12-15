@@ -1,0 +1,149 @@
+object Form_manager: TForm_manager
+  Left = 549
+  Top = 206
+  Caption = 'Form_manager'
+  ClientHeight = 450
+  ClientWidth = 1200
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 64
+    Top = 8
+    Width = 49
+    Height = 13
+    Caption = #1042#1086#1076#1080#1090#1077#1083#1080
+  end
+  object DBGrid_drivers: TDBGrid
+    Left = 8
+    Top = 27
+    Width = 250
+    Height = 382
+    DataSource = DataSource_drivers
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGrid_cars: TDBGrid
+    Left = 300
+    Top = 27
+    Width = 250
+    Height = 382
+    DataSource = DataSource_cars
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGrid1: TDBGrid
+    Left = 592
+    Top = 27
+    Width = 250
+    Height = 382
+    DataSource = DataSource_managers
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBGrid2: TDBGrid
+    Left = 886
+    Top = 27
+    Width = 250
+    Height = 382
+    DataSource = DataSource_operators
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object MainMenu1: TMainMenu
+    Left = 400
+    Top = 240
+    object N1: TMenuItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      object menu_diver: TMenuItem
+        Caption = #1042#1086#1076#1080#1090#1077#1083#1100
+        OnClick = menu_diverClick
+      end
+      object menu_operator: TMenuItem
+        Caption = #1054#1087#1077#1088#1072#1090#1086#1088
+        OnClick = menu_operatorClick
+      end
+      object menu_manager: TMenuItem
+        Caption = #1052#1077#1085#1077#1076#1078#1077#1088
+        OnClick = menu_managerClick
+      end
+      object menu_car: TMenuItem
+        Caption = #1052#1072#1096#1080#1085#1072
+        OnClick = menu_carClick
+      end
+    end
+    object menu_edit: TMenuItem
+      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+      object menu_edit_driver: TMenuItem
+        Caption = #1042#1086#1076#1080#1090#1077#1083#1100
+        OnClick = menu_edit_driverClick
+      end
+      object menu_edit_car: TMenuItem
+        Caption = #1052#1072#1096#1080#1085#1072
+        OnClick = menu_edit_carClick
+      end
+      object menu_edit_operator: TMenuItem
+        Caption = #1054#1087#1077#1088#1072#1090#1086#1088
+      end
+      object menu_edit_manager: TMenuItem
+        Caption = #1052#1077#1085#1077#1076#1078#1077#1088
+      end
+    end
+    object menu_distr_cars: TMenuItem
+      Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1080#1090#1100' '#1074#1086#1076#1080#1090#1077#1083#1077#1081' '
+      OnClick = menu_distr_carsClick
+    end
+    object menu_update: TMenuItem
+      Caption = #1054#1073#1085#1086#1074#1080#1090#1100
+      OnClick = menu_updateClick
+    end
+    object menu_orders: TMenuItem
+      Caption = #1047#1072#1082#1072#1079#1099
+      OnClick = menu_ordersClick
+    end
+  end
+  object DataSource_drivers: TDataSource
+    DataSet = dm.QDrivers
+    Left = 288
+    Top = 8
+  end
+  object DataSource_cars: TDataSource
+    DataSet = dm.TVehicle
+    Left = 344
+    Top = 128
+  end
+  object DataSource_managers: TDataSource
+    DataSet = dm.QManagers
+    Left = 544
+    Top = 16
+  end
+  object DataSource_operators: TDataSource
+    DataSet = dm.QOperators
+    Left = 896
+    Top = 16
+  end
+end

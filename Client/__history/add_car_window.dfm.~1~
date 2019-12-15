@@ -1,0 +1,55 @@
+object form_Add_Car: Tform_Add_Car
+  Left = 0
+  Top = 0
+  Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1072#1096#1080#1085#1091
+  ClientHeight = 309
+  ClientWidth = 557
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object label_mark: TLabeledEdit
+    Left = 104
+    Top = 88
+    Width = 121
+    Height = 21
+    EditLabel.Width = 51
+    EditLabel.Height = 13
+    EditLabel.Caption = 'label_mark'
+    TabOrder = 0
+  end
+  object label_number: TLabeledEdit
+    Left = 104
+    Top = 144
+    Width = 121
+    Height = 21
+    EditLabel.Width = 64
+    EditLabel.Height = 13
+    EditLabel.Caption = 'label_number'
+    TabOrder = 1
+  end
+  object label_model: TLabeledEdit
+    Left = 104
+    Top = 200
+    Width = 121
+    Height = 21
+    EditLabel.Width = 56
+    EditLabel.Height = 13
+    EditLabel.Caption = 'label_model'
+    TabOrder = 2
+  end
+  object BitBtn1: TBitBtn
+    Left = 280
+    Top = 142
+    Width = 75
+    Height = 25
+    Kind = bkOK
+    NumGlyphs = 2
+    TabOrder = 3
+  end
+end

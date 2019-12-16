@@ -16,6 +16,8 @@ type
     procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);virtual;abstract;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);virtual;abstract;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
 
   protected
     order_list : TList<TOrder_Interface>;
@@ -97,6 +99,19 @@ begin
 
     queue.Destroy;
     update_interface(order);
+end;
+
+
+procedure TForm_abstract_operator.FormCreate(Sender: TObject);
+begin
+    IdUDPServer1.Active := true;
+end;
+
+
+procedure TForm_abstract_operator.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   IdUDPServer1.Active :=  false;
 end;
 
 procedure TForm_abstract_operator.update_drivers;

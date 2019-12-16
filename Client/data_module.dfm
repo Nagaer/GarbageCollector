@@ -4,10 +4,7 @@ object dm: Tdm
   Height = 472
   Width = 716
   object IBDatabase1: TIBDatabase
-    Connected = True
-    DatabaseName = 
-      '192.168.43.115:C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_T' +
-      'AXI_actual_changes.FDB'
+    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actual_changes.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'

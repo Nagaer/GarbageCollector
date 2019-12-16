@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
   IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient,abstsract_operator_window,order_class,
   generics.collections,panel_order,order_interface, IdUDPServer, IdGlobal,driver_class,panel_driver,
-  IdSocketHandle,driver_interface, Vcl.Menus, user_class, data_module, data_module_add;
+  IdSocketHandle,driver_interface, Vcl.Menus, user_class, data_module, data_module_add,Colored_panel_class;
 
 type
   TForm_inh_operator = class(TForm_abstract_operator)
@@ -31,11 +31,12 @@ type
       procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);override;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);override;
-    user : TUser;
+
 
 
   public
     { Public declarations }
+    user : TUser;
     constructor Create(AOwner: TComponent); override;
   end;
 
@@ -89,8 +90,8 @@ begin
       dm.TAddress_Out.FieldByName('ID').Value,
       form_add_order.dtp_delivery.DateTime,
       dm.user.get_id,
-      form_add_order.label_stevedore,
-      form_add_order.label_price);
+      strToInt(form_add_order.label_stevedore.Text),
+      strToInt(form_add_order.label_price.Text));
    end;
 
 end;
@@ -180,5 +181,7 @@ procedure TForm_inh_operator.PanelDragOver(Sender, Source: TObject; X,
 begin
      accept := (source is TPanel_order ){and  (sender is TPanel_driver)};
 end;
+
+
 
 end.

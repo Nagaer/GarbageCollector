@@ -1,4 +1,4 @@
-unit Panel_driver;
+﻿unit Panel_driver;
 
 interface
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
@@ -20,7 +20,7 @@ type TPanel_driver = Class(TPanel,TDriver_Interface,IInterface)
   function get_status : integer;
   procedure update_driver(updated_driver : TDriver);
   procedure destroy_from_interface;
-
+  procedure doubleClick(Sender : TObject);
 
   procedure redraw;
   function get_queue : TPanel;
@@ -108,6 +108,9 @@ begin
     width := p_info_width;
     height := 40;
     visible := true;
+
+    ondblClick := doubleClick;
+
   end;
 
 
@@ -137,4 +140,11 @@ begin
   inherited;
 end;
 
+procedure   TPanel_driver.doubleClick(Sender: TObject);
+begin
+  // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ ВОДИТЕЛЯ ЗДЕСЬ
+  // OTKRITIE OKNA DETALEY VODITELIA ZDES
+  //  DRIVER DETAILS WINDOW OPENING HERE
+   (Sender as TColoredPanel).Color := RGB(0,0,0);
+end;
 end.

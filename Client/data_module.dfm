@@ -5,7 +5,7 @@ object dm: Tdm
   Width = 716
   object IBDatabase1: TIBDatabase
     Connected = True
-    DatabaseName = 'D:\Delphi Collector 2\FREIGHT_TAXI_actual_changes.FDB'
+    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actual_changes.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -17,7 +17,6 @@ object dm: Tdm
     Top = 80
   end
   object IBTransaction_read: TIBTransaction
-    Active = True
     DefaultDatabase = IBDatabase1
     Params.Strings = (
       'read_committed'

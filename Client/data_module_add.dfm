@@ -3,8 +3,7 @@ object dm_add: Tdm_add
   Height = 354
   Width = 554
   object IBDatabase1: TIBDatabase
-    Connected = True
-    DatabaseName = 'D:\Delphi Collector 2\FREIGHT_TAXI_actual_changes.FDB'
+    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actual_changes.FDB'
     Params.Strings = (
       'password=masterkey'
       'lc_ctype=WIN1251'
@@ -16,7 +15,6 @@ object dm_add: Tdm_add
     Top = 88
   end
   object IBTransaction1: TIBTransaction
-    Active = True
     DefaultDatabase = IBDatabase1
     Left = 248
     Top = 112

@@ -1,8 +1,9 @@
-unit Panel_order;
+﻿unit Panel_order;
 
 interface
  uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, colored_panel_class,Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface;
+  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, colored_panel_class,Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface
+  ;
 
 type TPanel_order = Class(TColoredPanel,TOrder_Interface,IInterface)
   private
@@ -17,6 +18,12 @@ type TPanel_order = Class(TColoredPanel,TOrder_Interface,IInterface)
   procedure update_order(updated_order : TOrder);
   procedure destroy_from_interface;
   procedure set_driver(id_driver: integer);
+
+  procedure MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+
+  procedure doubleClick(Sender : TObject);
+
 
 
   function get_driver_id : integer;
@@ -86,8 +93,9 @@ begin
   inherited Create(AOwner);
   order := Porder;
 
-  dragMode :=  dmAutomatic;
-  //onDragOver :=
+  dragMode :=  dmManual;
+  onMousedown :=  mouseDown;
+  ondblClick := doubleClick;
 
   // Put here order details
   put_details;
@@ -98,6 +106,20 @@ begin
   order.Destroy;
   parent := nil;
   inherited;
+end;
+
+procedure TPanel_order.MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X: Integer; Y: Integer);
+begin
+  if (Button = mbLeft) then
+    (Sender as TColoredPanel).BeginDrag(false);
+
+end;
+
+procedure TPanel_order.doubleClick(Sender: TObject);
+begin   // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ ЗАКАЗА ЗДЕСЬ
+  // OTKRITIE OKNA DETALEY ZAKAZA ZDES
+  //  ORDER DETAILS WINDOW OPENING HERE
+   (Sender as TColoredPanel).Color := RGB(0,0,0);
 end;
 
 

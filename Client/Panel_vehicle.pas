@@ -1,12 +1,12 @@
-unit Panel_vehicle;
+﻿unit Panel_vehicle;
 
 
 interface
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vehicle_class,Vehicle_interface;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class, Vehicle_class,Vehicle_interface;
 
 
-type TPanel_Vehicle = Class(TPanel,TVehicle_Interface,IInterface)
+type TPanel_Vehicle = Class(TColoredPanel,TVehicle_Interface,IInterface)
 
 
   private
@@ -22,6 +22,12 @@ type TPanel_Vehicle = Class(TPanel,TVehicle_Interface,IInterface)
   procedure set_driver(id_driver: integer);
 
   function get_driver_id : integer;
+
+
+  procedure MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+
+  procedure doubleClick(Sender : TObject);
 
   constructor Create(AOwner: TComponent;PVehicle : TVehicle);
   destructor Destroy; override;
@@ -86,8 +92,11 @@ begin
   inherited Create(AOwner);
   vehicle := Pvehicle;
 
-  dragMode :=  dmAutomatic;
- 
+  //dragMode :=  dmAutomatic;
+   dragMode :=  dmManual;
+  onMousedown :=  mouseDown;
+  ondblClick := doubleClick;
+
   // Put here order details
   put_details;
 end;
@@ -100,4 +109,17 @@ begin
   inherited;
 end;
 
+procedure TPanel_vehicle.MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X: Integer; Y: Integer);
+begin
+  if (Button = mbLeft) then
+    (Sender as TColoredPanel).BeginDrag(false);
+end;
+
+procedure TPanel_vehicle.doubleClick(Sender: TObject);
+begin
+  // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ МАШИНЫ ЗДЕСЬ
+  // OTKRITIE OKNA DETALEY MASHINI ZDES
+  //  CARS DETAILS WINDOW OPENING HERE
+  (sender as TColoredPanel).Color := RGB(0,0,0);
+end;
 end.

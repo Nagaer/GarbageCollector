@@ -27,6 +27,7 @@ type
     { Public declarations }
   user : TUser;
   procedure open_all;
+  procedure edit_host(host_name:string;fbd_path: string);
   end;
 
 var
@@ -40,7 +41,7 @@ implementation
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
-  open_all;
+  //open_all;
 end;
 
 procedure  Tdm.open_all;
@@ -62,4 +63,11 @@ begin
 
 end;
 
+procedure Tdm.edit_host(host_name:string;fbd_path: string);
+begin
+  dm.IBDatabase1.Close;
+  dm.IBDatabase1.DatabaseName := host_name + ':' + fbd_path;
+  dm.IBDatabase1.Open;
+  open_all;
+end;
 end.

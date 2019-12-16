@@ -13,11 +13,11 @@ type
   TElem = (Order,Vehicle,Driver);
   TForm_abstract_operator = class(TForm)
     IdUDPServer1: TIdUDPServer;
-    procedure IdUDPServer1UDPRead(AThread: TIdUDPListenerThread;
-      const AData: TIdBytes; ABinding: TIdSocketHandle);
     procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);virtual;abstract;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);virtual;abstract;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
 
   protected
     order_list : TList<TOrder_Interface>;
@@ -101,6 +101,19 @@ begin
     update_interface(order);
 end;
 
+
+procedure TForm_abstract_operator.FormCreate(Sender: TObject);
+begin
+    IdUDPServer1.Active := true;
+end;
+
+
+procedure TForm_abstract_operator.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   IdUDPServer1.Active :=  false;
+end;
+
 procedure TForm_abstract_operator.update_drivers;
 // Just the same code as update_orders :(
 var i,j,count : integer;
@@ -156,6 +169,7 @@ begin
     queue.Destroy;
     update_interface(driver);
 end;
+
 
 procedure TForm_abstract_operator.update_vehicles(date : TDate);
 var i,j,count : integer;
@@ -229,6 +243,7 @@ begin
     update_interface(vehicle);
 end;
 
+{
 procedure TForm_abstract_operator.IdUDPServer1UDPRead(
   AThread: TIdUDPListenerThread; const AData: TIdBytes;
   ABinding: TIdSocketHandle);
@@ -242,7 +257,7 @@ begin
   '3' : update_vehicles(now);
   end;
 end;
-
+}
 
 
 

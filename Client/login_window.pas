@@ -12,6 +12,10 @@ type
     Edit_password: TEdit;
     Label1: TLabel;
     Button_log_in: TButton;
+    Edit_adress: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit_path: TEdit;
     procedure Button_log_inClick(Sender: TObject);
   private
     { Private declarations }
@@ -26,14 +30,14 @@ implementation
 
 {$R *.dfm}
 
-uses Manager_window;
+uses Manager_window, operator_window_inh;
 
 procedure TLogin_Form.Button_log_inClick(Sender: TObject);
 var
 worker_id,role : integer;
 begin
     // Send request to bd
-
+    dm.edit_host(Edit_adress.Text,Edit_path.Text);
     with dm.spLogin do
     begin
 
@@ -63,9 +67,14 @@ begin
             Login_Form.Close;
           end
           else if dm.user.get_role = oper then begin
+<<<<<<< HEAD
             Form_manager := TForm_manager.create(APPLICATION);
             Form_manager.ShowModal;
             Login_Form.Close;
+=======
+             Form_inh_operator := TForm_inh_operator.create(APPLICATION);
+            Form_inh_operator.ShowModal;
+>>>>>>> ee25c080e97e6e45eac55ba829af02ab05caa179
           end;
 
           // else open operator window

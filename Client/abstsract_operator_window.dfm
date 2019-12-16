@@ -11,12 +11,14 @@ object Form_abstract_operator: TForm_abstract_operator
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object IdUDPServer1: TIdUDPServer
+    Active = True
     Bindings = <>
-    DefaultPort = 0
-    OnUDPRead = IdUDPServer1UDPRead
+    DefaultPort = 11000
     Left = 256
     Top = 136
   end

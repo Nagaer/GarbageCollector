@@ -1,5 +1,5 @@
 inherited Form_car_distributing: TForm_car_distributing
-  Caption = 'Form_car_distributing'
+  Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1084#1072#1096#1080#1085
   ClientHeight = 452
   ClientWidth = 758
   Menu = MainMenu1

@@ -1,7 +1,7 @@
 object form_Add_Car: Tform_Add_Car
   Left = 0
   Top = 0
-  Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1084#1072#1096#1080#1085#1091
+  Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1084#1072#1096#1080#1085#1086#1081
   ClientHeight = 309
   ClientWidth = 557
   Color = clBtnFace

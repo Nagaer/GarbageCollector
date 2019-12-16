@@ -2,7 +2,8 @@
 
 interface
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class, driver_class,driver_interface;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class,
+  driver_class,driver_interface, details_worker_window;
 
 
 type TPanel_driver = Class(TPanel,TDriver_Interface,IInterface)
@@ -11,7 +12,7 @@ type TPanel_driver = Class(TPanel,TDriver_Interface,IInterface)
 
   private
   driver : TDriver;
-  const maxOrdersCount = 6;
+  const maxOrdersCount = 5;
   procedure put_details;
 
   // from interface
@@ -77,10 +78,10 @@ begin
       for i := 0 to ControlCount - 1 do begin
         controls[i].Top := 0;
         if ControlCount < maxOrdersCount then begin
-          controls[i].Width := trunc(Width * 0.9 / ControlCount);
+          controls[i].Width := trunc((screen.Width * 0.7 - 80) * 0.9 / ControlCount);
         end
         else begin
-          controls[i].Width := trunc(Width / ControlCount);
+          controls[i].Width := trunc((screen.Width * 0.7 - 110) / ControlCount);
         end;
         controls[i].Left := controls[i].Width * i;
 
@@ -96,7 +97,7 @@ begin
 
 
   p_info_width := 80;
-  p_queue_width := 500;
+  p_queue_width := trunc(screen.Width*0.7-p_info_width);
 
   width := p_info_width + p_queue_width;
   // Setup info panel
@@ -142,9 +143,8 @@ end;
 
 procedure   TPanel_driver.doubleClick(Sender: TObject);
 begin
-  // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ ВОДИТЕЛЯ ЗДЕСЬ
-  // OTKRITIE OKNA DETALEY VODITELIA ZDES
-  //  DRIVER DETAILS WINDOW OPENING HERE
-   (Sender as TColoredPanel).Color := RGB(0,0,0);
+  form_Details_Worker := Tform_Details_Worker.Create(Application);
+  form_Details_Worker.id_worker := driver.get_id;
+  form_Details_Worker.showmodal;
 end;
 end.

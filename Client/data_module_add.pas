@@ -16,15 +16,17 @@ type
     spEdit_Worker: TIBStoredProc;
     spAdd_Order: TIBStoredProc;
     spAdd_Customer: TIBStoredProc;
+    spAdd_Address: TIBStoredProc;
   private
     { Private declarations }
   public
-  procedure add_car(mark:string; number:string; model:string);
-  procedure edit_car(id:integer; mark:string; number:string; model:string);
-  procedure add_worker(role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
-  procedure edit_worker(id:integer; status:integer; role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
-  procedure add_order(customer_id:integer; weight:integer; from_id:integer; to_id:integer; delivery:tdatetime; operator_id:integer; num_stevedore:integer; price:integer);
-  procedure add_customer(customer_name:string; customer_surname:string; address_id:integer; phone:string);
+    procedure add_car(mark:string; number:string; model:string);
+    procedure edit_car(id:integer; mark:string; number:string; model:string);
+    procedure add_worker(role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
+    procedure edit_worker(id:integer; status:integer; role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
+    procedure add_order(customer_id:integer; weight:integer; from_id:integer; to_id:integer; delivery:tdatetime; operator_id:integer; num_stevedore:integer; price:integer);
+    procedure add_customer(customer_name:string; customer_surname:string; address_id:integer; phone:string);
+    procedure add_address(city:string; street:string; number:integer; floor:integer);
   end;
 
 var
@@ -70,7 +72,8 @@ begin
   end;
 end;
 
-procedure Tdm_add.add_worker(role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
+procedure Tdm_add.add_worker(role_:integer; experience:integer; dob:tdatetime;
+                             worker_name:string; worker_surname:string);
 begin
 with dm_add.spAdd_Worker do
   begin
@@ -100,7 +103,7 @@ with dm_add.spEdit_Worker do
   ParamByName('ROLE_').AsInteger := role_;
   ParamByName('EXPERIENCE').AsInteger := experience;
   ParamByName('DOB').AsDate:= dob;
-  ParamByName('NAME').Value:= worker_surname;
+  ParamByName('NAME').Value:= worker_name;
   ParamByName('SURNAME').Value:= worker_surname;
 
   // Execute the procedure
@@ -151,6 +154,25 @@ with dm_add.spAdd_Worker do
   ParamByName('SURNAME').Value:= customer_surname;
   ParamByName('ID_ADDRESS').AsInteger := address_id;
   ParamByName('PHONE_NUMBER').Value:= phone;
+
+  // Execute the procedure
+  if not Transaction.InTransaction then
+    Transaction.StartTransaction;
+  ExecProc;
+  Transaction.Commit;
+  end;
+end;
+
+procedure Tdm_add.add_address(city:string; street:string;
+                               number:integer; floor:integer);
+begin
+with dm_add.spAdd_Address do
+  begin
+
+  ParamByName('CITY').Value:= city;
+  ParamByName('STREET').Value:= street;
+  ParamByName('NUMBER_HOUSE').AsInteger := number;
+  ParamByName('FLOOR_').AsInteger:= floor;
 
   // Execute the procedure
   if not Transaction.InTransaction then

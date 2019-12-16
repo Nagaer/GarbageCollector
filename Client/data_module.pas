@@ -25,7 +25,12 @@ type
     QCustomers: TIBQuery;
     TAddress_In: TIBTable;
     TAddress_Out: TIBTable;
-    IBQuery1: TIBQuery;
+    QCustomer_By_Id: TIBQuery;
+    QCar_By_Id: TIBQuery;
+    QWorker_By_Id: TIBQuery;
+    QOrder_By_Id: TIBQuery;
+    QAddress_By_Id: TIBQuery;
+    spEdit_Order_Status: TIBStoredProc;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -33,6 +38,7 @@ type
     { Public declarations }
   user : TUser;
   procedure open_all;
+  function get_name_customer_by_id(id:integer):string;
   end;
 
 var
@@ -70,6 +76,16 @@ begin
   end;
 
 
+end;
+
+function Tdm.get_name_customer_by_id(id:integer):string;
+begin
+  with dm.QCustomer_By_Id do begin
+    ParamByName('ID_CUSTOMER').Value := id;
+    open;
+  end;
+  get_name_customer_by_id := dm.QCustomer_By_Id.FieldByName('SURNAME').Value;
+  dm.QCustomer_By_Id.Close;
 end;
 
 end.

@@ -3,7 +3,8 @@
 
 interface
 uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class, Vehicle_class,Vehicle_interface;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class, Vehicle_class,
+  Vehicle_interface, details_car_window;
 
 
 type TPanel_Vehicle = Class(TColoredPanel,TVehicle_Interface,IInterface)
@@ -77,7 +78,8 @@ end;
 
 procedure TPanel_Vehicle.put_details;
 begin
-     caption := 'id: '+ intTostr(vehicle.get_id) + ' driver_id: ' + intTostr(vehicle.get_driver_id);
+     caption := vehicle.get_marka + ' ' + vehicle.get_number + ' ' + vehicle.get_model;
+     color := RGB(148, 0, 211); //DarkViolet (Purple)
 end;
 
 
@@ -116,10 +118,10 @@ begin
 end;
 
 procedure TPanel_vehicle.doubleClick(Sender: TObject);
+var timing_id:integer;
 begin
-  // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ МАШИНЫ ЗДЕСЬ
-  // OTKRITIE OKNA DETALEY MASHINI ZDES
-  //  CARS DETAILS WINDOW OPENING HERE
-  (sender as TColoredPanel).Color := RGB(0,0,0);
+  form_Details_Car := Tform_Details_Car.Create(Application);
+  form_Details_Car.id_car := vehicle.get_id;
+  form_Details_Car.showmodal;
 end;
 end.

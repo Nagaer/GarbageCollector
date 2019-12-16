@@ -28,7 +28,11 @@ uses
   add_car_window in 'add_car_window.pas' {form_Add_Car},
   add_worker_window in 'add_worker_window.pas' {form_Add_Worker},
   Colored_panel_class in 'Colored_panel_class.pas',
-  add_customer_window in 'add_customer_window.pas' {form_Add_customer};
+  add_customer_window in 'add_customer_window.pas' {form_Add_customer},
+  add_address_window in 'add_address_window.pas' {form_Add_Address},
+  details_car_window in 'details_car_window.pas' {form_Details_Car},
+  details_worker_window in 'details_worker_window.pas' {form_Details_Worker},
+  details_order_window in 'details_order_window.pas' {form_Details_Order};
 
 {$R *.res}
 
@@ -37,6 +41,10 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(Tdm_add, dm_add);
+  //Application.CreateForm(Tform_Details_Worker, form_Details_Worker);
+  //Application.CreateForm(Tform_Details_Order, form_Details_Order);
+  //Application.CreateForm(Tform_Details_Car, form_Details_Car);
+  //Application.CreateForm(Tform_Add_Address, form_Add_Address);
   //Application.CreateForm(Tform_Add_customer, form_Add_customer);
   //Application.CreateForm(Tform_Add_Worker, form_Add_Worker);
   //Application.CreateForm(Tform_Add_Driver, form_Add_Driver);

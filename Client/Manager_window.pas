@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, user_class, data_module_add,
-  Data.DB, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, data_module, add_customer_window ;
+  Data.DB, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, data_module ;
 
 type
   TForm_manager = class(TForm)
@@ -36,9 +36,10 @@ type
     Label_managers: TLabel;
     Label_operators: TLabel;
     menu_customer: TMenuItem;
+    menu_address: TMenuItem;
     procedure menu_ordersClick(Sender: TObject);
     procedure menu_distr_carsClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject;pUser : TUser);
+    procedure FormCreate(Sender: TObject);
     procedure menu_diverClick(Sender: TObject);
     procedure menu_managerClick(Sender: TObject);
     procedure menu_operatorClick(Sender: TObject);
@@ -49,6 +50,7 @@ type
     procedure menu_edit_managerClick(Sender: TObject);
     procedure menu_carClick(Sender: TObject);
     procedure menu_customerClick(Sender: TObject);
+    procedure menu_addressClick(Sender: TObject);
   private
     { Private declarations }
     user : TUser;
@@ -63,12 +65,38 @@ implementation
 
 {$R *.dfm}
 
-uses operator_window_inh, car_distributing_window, add_car_window, add_worker_window;
+uses operator_window_inh, car_distributing_window, add_car_window, add_address_window, add_worker_window, add_customer_window;
 
-
-procedure TForm_manager.FormCreate(Sender: TObject; pUser : TUser);
+procedure TForm_manager.FormCreate(Sender: TObject);
+var toplevel:integer;
 begin
-  user := pUser;
+  inherited;
+  toplevel := 40;
+  Width := screen.Width;
+  Height := screen.Height;
+  DBGrid_cars.Width := trunc(Width/4);
+  DBGrid_cars.Left := 0;
+  DBGrid_cars.Height := trunc(Height - toplevel);
+  DBGrid_cars.Top := toplevel;
+  label_cars.Left := 5;
+
+  DBGrid_drivers.Width := trunc(Width/4);
+  DBGrid_drivers.Left := trunc(Width/4);
+  DBGrid_drivers.Height := trunc(Height - toplevel);
+  DBGrid_drivers.Top := toplevel;
+  label_drivers.Left := trunc(Width/4)+5;
+
+  DBGrid_managers.Width:= trunc(Width/4);
+  DBGrid_managers.Left := trunc(Width*2/4);
+  DBGrid_managers.Height := trunc(Height - toplevel);
+  DBGrid_managers.Top := toplevel;
+  label_managers.Left := trunc(Width*2/4)+5;
+
+  DBGrid_operators.Width := trunc(Width/4);
+  DBGrid_operators.Left := trunc(Width*3/4);
+  DBGrid_operators.Height := trunc(Height - toplevel);
+  DBGrid_operators.Top := toplevel;
+  label_operators.Left := trunc(Width*3/4)+5;
 end;
 
 procedure TForm_manager.menu_diverClick(Sender: TObject);
@@ -107,6 +135,18 @@ begin
                         form_Add_Worker.label_name.text,
                         form_Add_Worker.label_surname.text);
 
+   end;
+end;
+
+procedure TForm_manager.menu_addressClick(Sender: TObject);
+begin
+  form_Add_Address := Tform_Add_Address.Create(Application);
+  form_Add_Address.ShowModal;
+  if form_Add_Address.ModalResult = mrOk then  begin
+      dm_add.add_address(form_Add_Address.label_city.Text,
+      form_Add_Address.label_street.Text,
+      StrToInt(form_Add_Address.label_number.Text),
+      StrToInt(form_Add_Address.label_floor.Text));
    end;
 end;
 
@@ -186,8 +226,8 @@ begin
                          dm.QDrivers.FieldByName('STATUS').Value, 2,
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
-                         form_Add_Worker.label_surname.text,
-                         form_Add_Worker.label_name.text);
+                         form_Add_Worker.label_name.text,
+                         form_Add_Worker.label_surname.text);
 
    end;
 
@@ -197,19 +237,19 @@ procedure TForm_manager.menu_edit_managerClick(Sender: TObject);
 begin
   form_Add_Worker := Tform_Add_Worker.Create(APPLICATION);
   with form_Add_Worker do begin
-    label_name.Text := dm.QDrivers.FieldByName('NAME').Value;
-    label_surname.Text := dm.QDrivers.FieldByName('SURNAME').Value;
-    label_exp.Text := dm.QDrivers.FieldByName('EXPERIENCE').Value;
-    dtp_DOB.DateTime := dm.QDrivers.FieldByName('DOB').AsDateTime;
+    label_name.Text := dm.QManagers.FieldByName('NAME').Value;
+    label_surname.Text := dm.QManagers.FieldByName('SURNAME').Value;
+    label_exp.Text := dm.QManagers.FieldByName('EXPERIENCE').Value;
+    dtp_DOB.DateTime := dm.QManagers.FieldByName('DOB').AsDateTime;
     showmodal;
   end;
   if form_Add_Worker.ModalResult = mrOk then  begin
-      dm_add.edit_worker(dm.QDrivers.FieldByName('ID').Value,
-                         dm.QDrivers.FieldByName('STATUS').Value, 0,
+      dm_add.edit_worker(dm.QManagers.FieldByName('ID').Value,
+                         dm.QManagers.FieldByName('STATUS').Value, 0,
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
-                         form_Add_Worker.label_surname.text,
-                         form_Add_Worker.label_name.text);
+                         form_Add_Worker.label_name.text,
+                         form_Add_Worker.label_surname.text);
 
    end;
 
@@ -219,19 +259,19 @@ procedure TForm_manager.menu_edit_operatorClick(Sender: TObject);
 begin
   form_Add_Worker := Tform_Add_Worker.Create(APPLICATION);
   with form_Add_Worker do begin
-    label_name.Text := dm.QDrivers.FieldByName('NAME').Value;
-    label_surname.Text := dm.QDrivers.FieldByName('SURNAME').Value;
-    label_exp.Text := dm.QDrivers.FieldByName('EXPERIENCE').Value;
-    dtp_DOB.DateTime := dm.QDrivers.FieldByName('DOB').AsDateTime;
+    label_name.Text := dm.QOperators.FieldByName('NAME').Value;
+    label_surname.Text := dm.QOperators.FieldByName('SURNAME').Value;
+    label_exp.Text := dm.QOperators.FieldByName('EXPERIENCE').Value;
+    dtp_DOB.DateTime := dm.QOperators.FieldByName('DOB').AsDateTime;
     showmodal;
   end;
   if form_Add_Worker.ModalResult = mrOk then  begin
-      dm_add.edit_worker(dm.QDrivers.FieldByName('ID').Value,
-                         dm.QDrivers.FieldByName('STATUS').Value, 1,
+      dm_add.edit_worker(dm.QOperators.FieldByName('ID').Value,
+                         dm.QOperators.FieldByName('STATUS').Value, 1,
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
-                         form_Add_Worker.label_surname.text,
-                         form_Add_Worker.label_name.text);
+                         form_Add_Worker.label_name.text,
+                         form_Add_Worker.label_surname.text);
 
    end;
 

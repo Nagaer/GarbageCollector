@@ -82,6 +82,14 @@ begin
     OnDragDrop := PanelDragDrop;
   end;
 
+  Width := screen.Width;
+  Height := screen.Height;
+  panel_driver.Width := trunc(Width*0.7);
+  Panel_vehicle.Width := trunc(Width*0.3);
+  panel_driver.Height := trunc(Height);
+  Panel_vehicle.Height := trunc(Height);
+  Panel_vehicle.Left := trunc(Width*0.7);
+
   update;
 end;
 
@@ -140,6 +148,7 @@ begin
         with panel_vehicle do begin
           for I := 0 to  ControlCount - 1 do begin
             controls[i].Left := 0;
+            controls[i].Width := trunc(screen.Width*0.3);
             controls[i].Top := I * 50;
           end
         end;

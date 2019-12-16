@@ -18,8 +18,10 @@ type
     MENU_UPDATE: TMenuItem;
     procedure MENU_UPDATEClick(Sender: TObject);
     procedure ADD_ORDERClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
   private
+  const maxOrdersCount = 5;
     { Private declarations }
      procedure add(Porder:TOrder);override ;
      procedure add(Pdriver:TDriver);override ;
@@ -104,6 +106,7 @@ begin
       for I := 0 to order_list.Count - 1 do begin
         order_p := (order_list[i] as TPanel_order);
         buff_id := order_p.get_driver_id;
+
         // if order have a driver
         if buff_id <> 0 then  begin
           j := 0;
@@ -137,7 +140,7 @@ begin
             controls[i].Top := I * 50;
           end
         end;
-        
+
         with Panel_drivers do begin
           for I := 0 to  ControlCount - 1 do begin
             controls[i].Left := 0;
@@ -152,13 +155,34 @@ begin
 end;
 
 constructor  TForm_inh_operator.Create(AOwner: TComponent);
+var i:integer;
 begin
   inherited;
   panel_orders.OnDragOver := PanelDragOver;
   panel_orders.OnDragDrop := PanelDragDrop;
   update;
+        with panel_orders do begin
+          for I := 0 to  ControlCount - 1 do begin
+            controls[i].Left := 0;
+            controls[i].Width := trunc(screen.Width*0.3);
+            controls[i].Top := I * 50;
+          end
+        end;
 end;
 
+
+procedure TForm_inh_operator.FormCreate(Sender: TObject);
+var i:integer;
+begin
+  inherited;
+  Width := screen.Width;
+  Height := screen.Height;
+  panel_drivers.Width := trunc(Width*0.7);
+  panel_orders.Width := trunc(Width*0.3);
+  panel_drivers.Height := trunc(Height);
+  panel_orders.Height := trunc(Height);
+  panel_orders.Left := trunc(Width*0.7);
+end;
 
 procedure TForm_inh_operator.MENU_UPDATEClick(Sender: TObject);
 begin

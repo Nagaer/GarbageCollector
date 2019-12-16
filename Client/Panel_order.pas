@@ -2,8 +2,8 @@
 
 interface
  uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, colored_panel_class,Vcl.StdCtrls, Vcl.ExtCtrls, order_class,order_interface
-  ;
+  Vcl.Controls, IBX.IBTable, Vcl.Forms, Vcl.Dialogs, colored_panel_class,Vcl.StdCtrls,
+  Vcl.ExtCtrls, order_class,order_interface, details_order_window;
 
 type TPanel_order = Class(TColoredPanel,TOrder_Interface,IInterface)
   private
@@ -66,9 +66,14 @@ end;
 // end From iterface---------------------------------
 
 procedure TPanel_order.put_details;
+var dod:string;
+    d_length:integer;
 begin
-     caption := 'id: '+ intTostr(order.get_id) + ' st: ' + intTostr(order.get_status)
-     + ' Dr id' + intToStr(order.get_driver_id);
+     dod := DateTimeToStr(order.get_date_delivery);
+     d_length := length(dod);
+     //dod := copy(dod, 2, d_length-1);
+     dod := copy(dod, 1, d_length-3);
+     caption := order.get_customer + ' ' + dod;
      if (order.get_status = 2) then begin
          color := RGB(250, 128, 114); //Salmon (Red)
      end
@@ -76,7 +81,7 @@ begin
          color := RGB(240, 230, 140); //Khaki (Yellow)
      end
      else begin
-         color := RGB(124, 252, 0); //LawnGreen (Green)
+         color := RGB(102, 205, 170); //LawnGreen (Green)
      end;
 end;
 
@@ -116,10 +121,10 @@ begin
 end;
 
 procedure TPanel_order.doubleClick(Sender: TObject);
-begin   // ОТКРЫТИЕ ОКОШКА ДЕТАЛЕЙ ЗАКАЗА ЗДЕСЬ
-  // OTKRITIE OKNA DETALEY ZAKAZA ZDES
-  //  ORDER DETAILS WINDOW OPENING HERE
-   (Sender as TColoredPanel).Color := RGB(0,0,0);
+begin
+  form_Details_Order := Tform_Details_Order.Create(Application);
+  form_Details_Order.id_order := order.get_id;
+  form_Details_Order.showmodal;
 end;
 
 

@@ -1,9 +1,9 @@
 object Form_manager: TForm_manager
-  Left = 549
+  Left = 5
   Top = 206
   Caption = #1054#1082#1085#1086' '#1084#1077#1085#1077#1076#1078#1077#1088#1072
-  ClientHeight = 450
-  ClientWidth = 1200
+  ClientHeight = 401
+  ClientWidth = 1112
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,39 +13,40 @@ object Form_manager: TForm_manager
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesigned
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label_drivers: TLabel
-    Left = 312
-    Top = 8
+    Left = 288
+    Top = 0
     Width = 49
     Height = 13
     Caption = #1042#1086#1076#1080#1090#1077#1083#1080
   end
   object Label_cars: TLabel
-    Left = 24
-    Top = 8
+    Left = 0
+    Top = 0
     Width = 42
     Height = 13
     Caption = #1052#1072#1096#1080#1085#1099
   end
   object Label_managers: TLabel
-    Left = 592
-    Top = 8
-    Width = 51
+    Left = 568
+    Top = 0
+    Width = 61
     Height = 13
-    Caption = #1052#1072#1085#1072#1075#1077#1088#1099
+    Caption = #1052#1077#1085#1077#1076#1078#1077#1088#1099
   end
   object Label_operators: TLabel
-    Left = 886
-    Top = 8
+    Left = 862
+    Top = 0
     Width = 58
     Height = 13
     Caption = #1054#1087#1077#1088#1072#1090#1086#1088#1099
   end
   object DBGrid_drivers: TDBGrid
-    Left = 312
-    Top = 27
+    Left = 288
+    Top = 19
     Width = 250
     Height = 382
     DataSource = DataSource_drivers
@@ -60,29 +61,33 @@ object Form_manager: TForm_manager
       item
         Expanded = False
         FieldName = 'SURNAME'
+        Title.Caption = #1060#1072#1084#1080#1083#1080#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NAME'
+        Title.Caption = #1048#1084#1103
         Width = 54
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DOB'
+        Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
         Width = 31
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'EXPERIENCE'
+        Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
         Visible = True
       end>
   end
   object DBGrid_cars: TDBGrid
-    Left = 24
-    Top = 27
+    Left = 0
+    Top = 19
     Width = 250
     Height = 382
     DataSource = DataSource_cars
@@ -97,23 +102,26 @@ object Form_manager: TForm_manager
       item
         Expanded = False
         FieldName = 'MARKA'
+        Title.Caption = #1052#1072#1088#1082#1072
         Width = 60
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'MODEL'
+        Title.Caption = #1052#1086#1076#1077#1083#1100
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NUMBER'
+        Title.Caption = #1053#1086#1084#1077#1088
         Visible = True
       end>
   end
   object DBGrid_managers: TDBGrid
-    Left = 592
-    Top = 27
+    Left = 568
+    Top = 19
     Width = 250
     Height = 382
     DataSource = DataSource_managers
@@ -128,27 +136,31 @@ object Form_manager: TForm_manager
       item
         Expanded = False
         FieldName = 'SURNAME'
+        Title.Caption = #1060#1072#1084#1080#1083#1080#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NAME'
+        Title.Caption = #1048#1084#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DOB'
+        Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'EXPERIENCE'
+        Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
         Visible = True
       end>
   end
   object DBGrid_operators: TDBGrid
-    Left = 886
-    Top = 27
+    Left = 862
+    Top = 19
     Width = 250
     Height = 382
     DataSource = DataSource_operators
@@ -163,21 +175,25 @@ object Form_manager: TForm_manager
       item
         Expanded = False
         FieldName = 'SURNAME'
+        Title.Caption = #1060#1072#1084#1080#1083#1080#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NAME'
+        Title.Caption = #1048#1084#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DOB'
+        Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'EXPERIENCE'
+        Title.Caption = #1054#1087#1099#1090
         Visible = True
       end>
   end
@@ -205,6 +221,10 @@ object Form_manager: TForm_manager
       object menu_customer: TMenuItem
         Caption = #1047#1072#1082#1072#1079#1095#1080#1082
         OnClick = menu_customerClick
+      end
+      object menu_address: TMenuItem
+        Caption = #1040#1076#1088#1077#1089
+        OnClick = menu_addressClick
       end
     end
     object menu_edit: TMenuItem

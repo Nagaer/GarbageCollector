@@ -5,7 +5,9 @@ object dm: Tdm
   Width = 716
   object IBDatabase1: TIBDatabase
     Connected = True
-    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actual_changes.FDB'
+    DatabaseName = 
+      'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actual_chang' +
+      'es.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -17,6 +19,7 @@ object dm: Tdm
     Top = 80
   end
   object IBTransaction_read: TIBTransaction
+    Active = True
     DefaultDatabase = IBDatabase1
     Params.Strings = (
       'read_committed'
@@ -298,11 +301,112 @@ object dm: Tdm
     Left = 576
     Top = 384
   end
-  object IBQuery1: TIBQuery
+  object QCustomer_By_Id: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
-    Left = 352
-    Top = 368
+    SQL.Strings = (
+      'Select * from customers where id = :ID_CUSTOMER;')
+    Left = 512
+    Top = 120
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_customer'
+        ParamType = ptInput
+      end>
+  end
+  object QCar_By_Id: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from garage where id = :id_car;')
+    Left = 640
+    Top = 144
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_car'
+        ParamType = ptInput
+      end>
+  end
+  object QWorker_By_Id: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from workers where id = :id_worker;')
+    Left = 648
+    Top = 192
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_worker'
+        ParamType = ptInput
+      end>
+  end
+  object QOrder_By_Id: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from orders where id = :id_order;')
+    Left = 656
+    Top = 288
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_order'
+        ParamType = ptInput
+      end>
+  end
+  object QAddress_By_Id: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from address where id = :id_address;')
+    Left = 656
+    Top = 376
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_address'
+        ParamType = ptInput
+      end>
+  end
+  object spEdit_Order_Status: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction_read
+    StoredProcName = 'EDIT_ORDER_SET_STATUS'
+    Left = 328
+    Top = 384
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ID_ORDER'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'NEW_STATUS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'ID_WORKERS'
+        ParamType = ptInput
+      end>
   end
 end

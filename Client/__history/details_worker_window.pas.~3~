@@ -1,0 +1,37 @@
+unit details_worker_window;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  Tform_Details_Worker = class(TForm)
+    label_name: TLabel;
+    label_surname: TLabel;
+    label_role: TLabel;
+    label_dob: TLabel;
+    label_exp: TLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    id_worker:integer;
+  end;
+
+var
+  form_Details_Worker: Tform_Details_Worker;
+
+implementation
+
+{$R *.dfm}
+
+procedure Tform_Details_Worker.FormCreate(Sender: TObject);
+begin
+    Width := trunc(screen.Width/5);
+    Height := trunc(screen.Height/3);
+end;
+
+end.

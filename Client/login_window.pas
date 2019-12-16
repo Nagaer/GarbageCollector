@@ -60,10 +60,12 @@ begin
 
             Form_manager := TForm_manager.create(APPLICATION);
             Form_manager.ShowModal;
+            Login_Form.Close;
           end
           else if dm.user.get_role = oper then begin
-             Form_manager := TForm_manager.create(APPLICATION);
+            Form_manager := TForm_manager.create(APPLICATION);
             Form_manager.ShowModal;
+            Login_Form.Close;
           end;
 
           // else open operator window

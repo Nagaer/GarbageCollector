@@ -1,0 +1,47 @@
+object form_Details_Car: Tform_Details_Car
+  Left = 0
+  Top = 0
+  Caption = 'form_Details_Car'
+  ClientHeight = 250
+  ClientWidth = 315
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClick = FormClick
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object label_marka: TLabel
+    Left = 120
+    Top = 56
+    Width = 57
+    Height = 13
+    Caption = 'label_marka'
+  end
+  object label_number: TLabel
+    Left = 120
+    Top = 96
+    Width = 64
+    Height = 13
+    Caption = 'label_number'
+  end
+  object label_model: TLabel
+    Left = 120
+    Top = 144
+    Width = 56
+    Height = 13
+    Caption = 'label_model'
+  end
+  object label_test: TLabel
+    Left = 120
+    Top = 24
+    Width = 47
+    Height = 13
+    Caption = 'label_test'
+  end
+end

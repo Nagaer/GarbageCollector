@@ -6,6 +6,9 @@ uses IBX.IBtable, data_module,System.SysUtils;
   id : integer;
   status : integer;
   driver_id : integer;
+  marka : string;
+  model : string;
+  number : string;
   curr_date : TDate;
   procedure push;
  public
@@ -17,6 +20,9 @@ uses IBX.IBtable, data_module,System.SysUtils;
     function get_id : integer;
     function get_status : integer;
     function get_driver_id : integer;
+    function get_marka : string;
+    function get_number : string;
+    function get_model : string;
  end;
 implementation
 
@@ -29,10 +35,25 @@ function Tvehicle.get_status ;
 begin
    get_status := status;
 end;
+function Tvehicle.get_marka ;
+begin
+   get_marka := marka;
+end;
+function Tvehicle.get_number ;
+begin
+   get_number := number;
+end;
+function Tvehicle.get_model ;
+begin
+   get_model := model;
+end;
 constructor Tvehicle.Create(row : TIBTable;Pdriver_id: integer;date : TDate);
 begin
     id := row.FieldByName('ID').AsInteger;
     status := row.FieldByName('STATUS').AsInteger;
+    marka := row.FieldByName('MARKA').Value;
+    number := row.FieldByName('NUMBER').Value;
+    model := row.FieldByName('MODEL').Value;
     driver_id := PDriver_id;
     curr_date := date;
 end;

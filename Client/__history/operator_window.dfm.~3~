@@ -1,0 +1,71 @@
+object operator_form: Toperator_form
+  Left = 0
+  Top = 0
+  Caption = 'operator_form'
+  ClientHeight = 576
+  ClientWidth = 852
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 61
+    Width = 49
+    Height = 13
+    Caption = #1042#1086#1076#1080#1090#1077#1083#1080
+  end
+  object Label2: TLabel
+    Left = 744
+    Top = 61
+    Width = 37
+    Height = 13
+    Caption = #1047#1072#1082#1072#1079#1099
+  end
+  object Panel1: TPanel
+    Left = 584
+    Top = 120
+    Width = 185
+    Height = 89
+    Caption = 'Panel1'
+    TabOrder = 0
+  end
+  object ListBox1: TListBox
+    Left = 104
+    Top = 120
+    Width = 121
+    Height = 97
+    Style = lbOwnerDrawVariable
+    Items.Strings = (
+      'one'
+      'two'
+      'three')
+    TabOrder = 1
+    OnDrawItem = ListBox1DrawItem
+    OnMeasureItem = ListBox1MeasureItem
+  end
+  object HeaderControl1: THeaderControl
+    Left = 0
+    Top = 0
+    Width = 852
+    Height = 33
+    Sections = <>
+  end
+  object DataSource1: TDataSource
+    DataSet = ClientDataSet1
+    Left = 448
+    Top = 184
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    FileName = 'C:\Users\dupel\OneDrive\'#1056#1072#1073#1086#1095#1080#1081' '#1089#1090#1086#1083'\ex_cd.xml'
+    Params = <>
+    Left = 448
+    Top = 96
+  end
+end

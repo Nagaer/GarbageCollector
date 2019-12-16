@@ -4,14 +4,10 @@ object dm: Tdm
   Height = 472
   Width = 716
   object IBDatabase1: TIBDatabase
-<<<<<<< HEAD
     Connected = True
     DatabaseName = 
       'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actual_chang' +
       'es.FDB'
-=======
-    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actual_changes.FDB'
->>>>>>> ee25c080e97e6e45eac55ba829af02ab05caa179
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -19,7 +15,6 @@ object dm: Tdm
     LoginPrompt = False
     DefaultTransaction = IBTransaction_read
     ServerType = 'IBServer'
-    TraceFlags = [tfQPrepare, tfQExecute, tfQFetch, tfStmt, tfTransact]
     Left = 112
     Top = 80
   end

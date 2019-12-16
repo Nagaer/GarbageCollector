@@ -1,5 +1,5 @@
 unit data_module;
-//C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_TAXI_actual_changes.FDB
+
 interface
 
 uses
@@ -38,11 +38,7 @@ type
     { Public declarations }
   user : TUser;
   procedure open_all;
-<<<<<<< HEAD
   function get_name_customer_by_id(id:integer):string;
-=======
-  procedure edit_host(host_name:string;fbd_path: string);
->>>>>>> ee25c080e97e6e45eac55ba829af02ab05caa179
   end;
 
 var
@@ -56,7 +52,7 @@ implementation
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
-  //open_all;
+  open_all;
 end;
 
 procedure  Tdm.open_all;
@@ -82,7 +78,6 @@ begin
 
 end;
 
-<<<<<<< HEAD
 function Tdm.get_name_customer_by_id(id:integer):string;
 begin
   with dm.QCustomer_By_Id do begin
@@ -93,13 +88,4 @@ begin
   dm.QCustomer_By_Id.Close;
 end;
 
-=======
-procedure Tdm.edit_host(host_name:string;fbd_path: string);
-begin
-  dm.IBDatabase1.Close;
-  dm.IBDatabase1.DatabaseName := host_name + ':' + fbd_path;
-  dm.IBDatabase1.Open;
-  open_all;
-end;
->>>>>>> ee25c080e97e6e45eac55ba829af02ab05caa179
 end.

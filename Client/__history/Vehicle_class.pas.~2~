@@ -1,0 +1,43 @@
+unit Vehicle_class;
+
+interface
+uses IBX.IBtable;
+ type Tvehicle = class
+  id : integer;
+  status : integer;
+ public
+  constructor Create(row : TIBTable);
+    procedure Edit(P_id: integer);
+    destructor Destroy;
+    function get_id : integer;
+    function get_status : integer;
+ end;
+implementation
+
+function Tvehicle.get_id;
+begin
+   get_id  := id;
+end;
+
+function Tvehicle.get_status ;
+begin
+   get_status := status;
+end;
+constructor Tvehicle.Create(row : TIBTable);
+begin
+    id := row.FieldByName('ID').AsInteger;
+    status := row.FieldByName('STATUS').AsInteger;
+end;
+
+procedure Tvehicle.Edit(P_id: Integer);
+begin
+  id := p_id;
+end;
+
+destructor Tvehicle.Destroy;
+begin
+
+
+end;
+
+end.

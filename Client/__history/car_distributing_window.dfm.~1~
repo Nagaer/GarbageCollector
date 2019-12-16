@@ -1,0 +1,21 @@
+inherited Form_car_distributing: TForm_car_distributing
+  Caption = 'Form_car_distributing'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel_driver: TPanel [0]
+    Left = 0
+    Top = 8
+    Width = 297
+    Height = 414
+    Caption = 'Panel_driver'
+    TabOrder = 0
+  end
+  object Panel_car: TPanel [1]
+    Left = 296
+    Top = 8
+    Width = 307
+    Height = 414
+    Caption = 'Panel_car'
+    TabOrder = 1
+  end
+end

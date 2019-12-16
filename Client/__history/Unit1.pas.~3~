@@ -1,0 +1,62 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient,abstsract_operator_window,order_class,
+  generics.collections,panel_order;
+
+type
+  TForm_operator = class(TForm_abstract_operator)
+  panel_order_list : TList<TPanel_order> ;
+    Panel_drivers: TPanel;
+    Panel_orders: TPanel;
+    Panel_order: TPanel;
+    Button1: TButton;
+    Panel_driver: TPanel;
+    IdUDPClient1: TIdUDPClient;
+    procedure Button1Click(Sender: TObject);
+    procedure Panel_DragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure Panel_DragDrop(Sender, Source: TObject; X, Y: Integer);
+  private
+    { Private declarations }
+     procedure add(Porder:TOrder);overload;virtual;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_operator: TForm_operator;
+
+implementation
+
+{R *.dfm}
+
+
+
+
+procedure TForm_operator.add(Porder:TOrder);
+begin
+
+end;
+
+procedure TForm_operator.Button1Click(Sender: TObject);
+begin
+  panel_order.Parent :=  Panel_drivers;
+end;
+
+procedure TForm_operator.Panel_DragDrop(Sender, Source: TObject; X, Y: Integer);
+begin
+  (source as TPanel).Parent := (Sender as TPanel);
+end;
+
+procedure TForm_operator.Panel_DragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  accept := sender is TPanel;
+end;
+
+end.

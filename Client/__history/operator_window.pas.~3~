@@ -1,0 +1,64 @@
+unit operator_window;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB,
+  Datasnap.DBClient, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  Toperator_form = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Panel1: TPanel;
+    ListBox1: TListBox;
+    DataSource1: TDataSource;
+    ClientDataSet1: TClientDataSet;
+    HeaderControl1: THeaderControl;
+    procedure ListBox1DrawItem(Control: TWinControl; Index: Integer;
+      Rect: TRect; State: TOwnerDrawState);
+    procedure ListBox1MeasureItem(Control: TWinControl; Index: Integer;
+      var Height: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  operator_form: Toperator_form;
+
+implementation
+
+{$R *.dfm}
+
+procedure Toperator_form.ListBox1DrawItem(Control: TWinControl; Index: Integer;
+  Rect: TRect; State: TOwnerDrawState);
+  var
+   pic : TPicture;
+   myRect  : Trect;
+   item : string;
+  begin
+      item := ListBox1.items[index];
+
+      myRect.Height := rect.Height * 2;
+      with listBox1.Canvas Do
+      begin
+        brush.Color := clred;
+        fillRect(Rect);
+        font.Size := 16;
+        font.Color := clGray;
+
+        textOut(Rect.Left, Rect.Top, item);
+
+      end;
+end;
+
+procedure Toperator_form.ListBox1MeasureItem(Control: TWinControl;
+  Index: Integer; var Height: Integer);
+begin
+  height := 30;
+end;
+
+end.

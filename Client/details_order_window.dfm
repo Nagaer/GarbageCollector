@@ -158,6 +158,19 @@ object form_Details_Order: Tform_Details_Order
     Font.Style = []
     ParentFont = False
   end
+  object label_id: TLabel
+    Left = 32
+    Top = 18
+    Width = 44
+    Height = 13
+    Caption = 'label_id'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
   object BitBtn1: TBitBtn
     Left = 8
     Top = 288

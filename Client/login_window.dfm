@@ -122,7 +122,7 @@ object Login_Form: TLogin_Form
     ParentFont = False
     TabOrder = 4
     Text = 
-      'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actualest_ch' +
-      'anges.FDB'
+      'D:\Delphi Collector\GarbageCollector\FREIGHT_TAXI_actualest_chan' +
+      'ges.FDB'
   end
 end

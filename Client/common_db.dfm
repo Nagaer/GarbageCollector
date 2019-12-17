@@ -3,10 +3,9 @@ object dm_db: Tdm_db
   Height = 253
   Width = 308
   object IBDatabase_read: TIBDatabase
-    Connected = True
     DatabaseName = 
-      'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actualest_ch' +
-      'anges.FDB'
+      'D:\Delphi Collector\GarbageCollector\FREIGHT_TAXI_actualest_chan' +
+      'ges.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -31,7 +30,6 @@ object dm_db: Tdm_db
     Top = 152
   end
   object IBDatabase_edit: TIBDatabase
-    Connected = True
     DatabaseName = 
       'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actualest_ch' +
       'anges.FDB'

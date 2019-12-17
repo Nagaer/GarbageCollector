@@ -16,8 +16,8 @@ object form_Details_Car: Tform_Details_Car
   PixelsPerInch = 96
   TextHeight = 13
   object label_marka: TLabel
-    Left = 120
-    Top = 56
+    Left = 104
+    Top = 67
     Width = 71
     Height = 13
     Caption = 'label_marka'
@@ -29,8 +29,8 @@ object form_Details_Car: Tform_Details_Car
     ParentFont = False
   end
   object label_number: TLabel
-    Left = 120
-    Top = 96
+    Left = 104
+    Top = 86
     Width = 78
     Height = 13
     Caption = 'label_number'
@@ -42,11 +42,24 @@ object form_Details_Car: Tform_Details_Car
     ParentFont = False
   end
   object label_model: TLabel
-    Left = 120
-    Top = 144
+    Left = 104
+    Top = 105
     Width = 69
     Height = 13
     Caption = 'label_model'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
+  object label_id: TLabel
+    Left = 104
+    Top = 40
+    Width = 44
+    Height = 13
+    Caption = 'label_id'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11

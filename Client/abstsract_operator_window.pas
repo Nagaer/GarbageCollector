@@ -71,8 +71,11 @@ begin
     queue.InsertRange(0,order_list);
 
     for  i := 0 to count - 1 do    begin
-      if dm.TOrders.FieldByName('STATUS').AsInteger in ignore_status  then
+      if dm.TOrders.FieldByName('STATUS').AsInteger in ignore_status  then begin
+        dm.TOrders.Next;
         continue;
+      end;
+
 
       j:=0;
       while ( j < queue.Count) and ( queue[j].get_id  <> dm.TOrders.FieldByName('ID').AsInteger )  do

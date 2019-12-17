@@ -20,6 +20,7 @@ type
     label_stevedors: TLabel;
     label_price: TLabel;
     BitBtn1: TBitBtn;
+    label_id: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -39,15 +40,20 @@ implementation
 {$R *.dfm}
 
 procedure Tform_Details_Order.BitBtn1Click(Sender: TObject);
+var who_driver:integer;
 begin
     //Если мы нажали на эту кнопочку, то статус заказа теперь не комильфо
     // Edit order
-     with dm.spEdit_Order_Status do
+    dm.QOrder_By_Id.ParamByName('ID_ORDER').Value := id_order;
+    dm.QOrder_By_Id.Open;
+    who_driver := dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value;
+    dm.QOrder_By_Id.Close;
+    with dm.spEdit_Order_Status do
     begin
 
     ParamByName('ID_ORDER').AsInteger := id_order;
-    ParamByName('ID_WORKERS').AsInteger:= dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value ;
-    ParamByName('NEW_STATUS').AsInteger:=  7;
+    ParamByName('ID_WORKERS').AsInteger:= who_driver;
+    ParamByName('NEW_STATUS').AsInteger:=  8;
 
     // Execute the procedure
     if not Transaction.InTransaction then
@@ -55,7 +61,7 @@ begin
     ExecProc;
     Transaction.Commit;
     end;
-      dm.open_all;
+
 end;
 
 procedure Tform_Details_Order.FormCreate(Sender: TObject);
@@ -70,11 +76,12 @@ var customer_id, customer_address_id, address_id_from, address_id_to, driver_id,
 begin
     dm.QOrder_By_Id.ParamByName('ID_ORDER').Value := id_order;
     dm.QOrder_By_Id.Open;
+    form_Details_Order.label_id.Caption := 'Id: ' + IntToStr(id_order);
     customer_id := dm.QOrder_By_Id.FieldByName('ID_CUSTOMER').Value;
     form_Details_Order.label_weight.Caption := 'Вес груза: ' + IntToStr(dm.QOrder_By_Id.FieldByName('WEIGHT').Value) + ' грамм';
     address_id_from := dm.QOrder_By_Id.FieldByName('FROM_ID_ADDRESS').Value;
     address_id_to := dm.QOrder_By_Id.FieldByName('TO_ID_ADDRESS').Value;
-    form_Details_Order.label_dod.Caption := dm.QOrder_By_Id.FieldByName('DATE_OF_DELIVERY').Value;
+    form_Details_Order.label_dod.Caption := 'Дата доставки: ' + DateTimeToStr(dm.QOrder_By_Id.FieldByName('DATE_OF_DELIVERY').Value);
     if VarIsNull(dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value) then begin
       check_driver:=false;
     end
@@ -96,24 +103,24 @@ begin
 
     dm.QCustomer_By_Id.ParamByName('ID_CUSTOMER').Value := customer_id;
     dm.QCustomer_By_Id.Open;
-    form_Details_Order.label_customer_surname_and_name.Caption := dm.QCustomer_By_Id.FieldByName('SURNAME').Value + ' ' + dm.QCustomer_By_Id.FieldByName('NAME').Value;
+    form_Details_Order.label_customer_surname_and_name.Caption := 'Заказчик: ' + dm.QCustomer_By_Id.FieldByName('SURNAME').Value + ' ' + dm.QCustomer_By_Id.FieldByName('NAME').Value;
     customer_address_id := dm.QCustomer_By_Id.FieldByName('ID_ADDRESS').Value;
-    form_Details_Order.label_customer_phone.Caption := dm.QCustomer_By_Id.FieldByName('PHONE_NUMBER').Value;
+    form_Details_Order.label_customer_phone.Caption := 'Номер заказчика: +' + dm.QCustomer_By_Id.FieldByName('PHONE_NUMBER').Value;
     dm.QCustomer_By_Id.Close;
 
     dm.QAddress_By_Id.ParamByName('ID_ADDRESS').Value := customer_address_id;
     dm.QAddress_By_Id.Open;
-    form_Details_Order.label_customer_address.Caption := 'г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
+    form_Details_Order.label_customer_address.Caption := 'Адрес заказчика: г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
     dm.QAddress_By_Id.Close;
 
     dm.QAddress_By_Id.ParamByName('ID_ADDRESS').Value := address_id_from;
     dm.QAddress_By_Id.Open;
-    form_Details_Order.label_from_address.Caption := 'г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
+    form_Details_Order.label_from_address.Caption := 'Откуда: г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
     dm.QAddress_By_Id.Close;
 
     dm.QAddress_By_Id.ParamByName('ID_ADDRESS').Value := address_id_to;
     dm.QAddress_By_Id.Open;
-    form_Details_Order.label_to_address.Caption := 'г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
+    form_Details_Order.label_to_address.Caption := 'Куда: г. ' + dm.QAddress_By_Id.FieldByName('CITY').Value + ', ул. ' + dm.QAddress_By_Id.FieldByName('STREET').Value + ', д. ' + IntToStr(dm.QAddress_By_Id.FieldByName('NUMBER_HOUSE').Value) + ', этаж №' + IntToStr(dm.QAddress_By_Id.FieldByName('FLOOR_').Value);
     dm.QAddress_By_Id.Close;
 
     if check_driver then begin

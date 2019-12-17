@@ -80,6 +80,9 @@ begin
      else if (order.get_status = 1) then begin
          color := RGB(240, 230, 140); //Khaki (Yellow)
      end
+     else if (order.get_status = 6) then begin
+         color := clPurple; //Khaki (Yellow)
+     end
      else begin
          color := RGB(102, 205, 170); //LawnGreen (Green)
      end;

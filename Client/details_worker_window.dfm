@@ -17,7 +17,7 @@ object form_Details_Worker: Tform_Details_Worker
   TextHeight = 13
   object label_name: TLabel
     Left = 104
-    Top = 56
+    Top = 75
     Width = 66
     Height = 13
     Caption = 'label_name'
@@ -30,7 +30,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_surname: TLabel
     Left = 104
-    Top = 96
+    Top = 59
     Width = 84
     Height = 13
     Caption = 'label_surname'
@@ -43,7 +43,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_role: TLabel
     Left = 104
-    Top = 208
+    Top = 102
     Width = 56
     Height = 13
     Caption = 'label_role'
@@ -69,10 +69,23 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_exp: TLabel
     Left = 104
-    Top = 168
+    Top = 147
     Width = 55
     Height = 13
     Caption = 'label_exp'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
+  object label_id: TLabel
+    Left = 104
+    Top = 40
+    Width = 44
+    Height = 13
+    Caption = 'label_id'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11

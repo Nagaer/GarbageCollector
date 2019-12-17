@@ -25,7 +25,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
-    const statusOnExit = 7;
+    const statusOnExit = 6;
   public
     { Public declarations }
     id_order:integer;
@@ -41,6 +41,21 @@ implementation
 procedure Tform_Details_Order.BitBtn1Click(Sender: TObject);
 begin
     //Если мы нажали на эту кнопочку, то статус заказа теперь не комильфо
+    // Edit order
+     with dm.spEdit_Order_Status do
+    begin
+
+    ParamByName('ID_ORDER').AsInteger := id_order;
+    ParamByName('ID_WORKERS').AsInteger:= dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value ;
+    ParamByName('NEW_STATUS').AsInteger:=  7;
+
+    // Execute the procedure
+    if not Transaction.InTransaction then
+      Transaction.StartTransaction;
+    ExecProc;
+    Transaction.Commit;
+    end;
+      dm.open_all;
 end;
 
 procedure Tform_Details_Order.FormCreate(Sender: TObject);

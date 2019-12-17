@@ -19,6 +19,8 @@ type
     DBGrid1: TDBGrid;
     DataSource_address: TDataSource;
     Label4: TLabel;
+    Button_add_adress: TButton;
+    procedure Button_add_adressClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,5 +33,21 @@ var
 implementation
 
 {$R *.dfm}
+
+uses add_address_window, data_module_add;
+
+procedure Tform_Add_customer.Button_add_adressClick(Sender: TObject);
+begin
+  form_Add_Address := Tform_Add_Address.Create(Application);
+  form_Add_Address.ShowModal;
+  if form_Add_Address.ModalResult = mrOk then  begin
+      dm_add.add_address(form_Add_Address.label_city.Text,
+      form_Add_Address.label_street.Text,
+      StrToInt(form_Add_Address.label_number.Text),
+      StrToInt(form_Add_Address.label_floor.Text));
+   end;
+   dm.TAddress_In.Refresh;
+   dm.TAddress_Out.Refresh;
+end;
 
 end.

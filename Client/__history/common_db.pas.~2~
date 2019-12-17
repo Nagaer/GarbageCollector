@@ -1,0 +1,29 @@
+unit common_db;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, IBX.IBDatabase;
+
+type
+  Tdm_db = class(TDataModule)
+    IBDatabase_read: TIBDatabase;
+    IBTransaction_read: TIBTransaction;
+    IBTransaction_edit: TIBTransaction;
+    IBDatabase_edit: TIBDatabase;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dm_db: Tdm_db;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

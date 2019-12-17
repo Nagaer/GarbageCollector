@@ -95,7 +95,7 @@ begin
       strToInt(form_add_order.label_stevedore.Text),
       strToInt(form_add_order.label_price.Text));
    end;
-
+   update;
 end;
 
 procedure TForm_inh_operator.update_interface(elem : TElem);

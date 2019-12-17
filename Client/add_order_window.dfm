@@ -130,7 +130,7 @@ object Form_add_order: TForm_add_order
     Top = 313
     Width = 320
     Height = 120
-    DataSource = DataSource_from_address
+    DataSource = DataSource_to_address
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

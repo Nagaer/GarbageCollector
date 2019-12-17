@@ -4,19 +4,17 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet,
-  IBX.IBStoredProc, IBX.IBDatabase;
+  IBX.IBStoredProc, IBX.IBDatabase, common_db;
 
 type
   Tdm_add = class(TDataModule)
-    IBDatabase1: TIBDatabase;
-    IBTransaction1: TIBTransaction;
     spAdd_Car: TIBStoredProc;
     spAdd_Worker: TIBStoredProc;
     spEdit_Car: TIBStoredProc;
     spEdit_Worker: TIBStoredProc;
+    spAdd_Address: TIBStoredProc;
     spAdd_Order: TIBStoredProc;
     spAdd_Customer: TIBStoredProc;
-    spAdd_Address: TIBStoredProc;
   private
     { Private declarations }
   public
@@ -131,7 +129,7 @@ with dm_add.spAdd_Order do
   ParamByName('ID_OPERATOR').AsInteger := operator_id;
   ParamByName('NUMBER_STEVEDORE').AsInteger := num_stevedore;
   ParamByName('PRICE').AsInteger := price;
-  ParamByName('STATUS').AsInteger := 0;
+  //ParamByName('STATUS').AsInteger := 0;
   //ParamByName('DATE_ORDER_COMPLETION').AsDate:= null;
   //ParamByName('DATE_ORDER_CANCELLATION').AsDate:= null;
 
@@ -147,7 +145,7 @@ end;
 procedure Tdm_add.add_customer(customer_name:string; customer_surname:string;
                                address_id:integer; phone:string);
 begin
-with dm_add.spAdd_Worker do
+with dm_add.spAdd_Customer do
   begin
 
   ParamByName('NAME').Value:= customer_name;

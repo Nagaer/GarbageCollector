@@ -4,12 +4,11 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBTable,
-  IBX.IBDatabase, Datasnap.Provider, IBX.IBStoredProc, IBX.IBQuery, User_class;
+  IBX.IBDatabase, Datasnap.Provider, IBX.IBStoredProc, IBX.IBQuery, User_class,
+  common_db;
 
 type
   Tdm = class(TDataModule)
-    IBDatabase1: TIBDatabase;
-    IBTransaction_read: TIBTransaction;
     Torders: TIBTable;
     TWorkers: TIBTable;
     spEDIT_ORDER_SET_DRIVER: TIBStoredProc;
@@ -61,6 +60,9 @@ begin
   dm.TWorkers.Open;
   dm.TVehicle.Open;
   dm.TNew_day_car_delivery.Open;
+  dm.TAddress_In.Open;
+  dm.TAddress_Out.Open;
+
 
    dm.Qdrivers.Close;
    dm.QDrivers.Open;
@@ -68,6 +70,8 @@ begin
    dm.QManagers.Open;
    dm.QOperators.Close;
    dm.QOperators.Open;
+   dm.QCustomers.Close;
+   dm.QCustomers.Open;
 
   with   dm.QDriver_id_from_vehicle_day do begin
     ParamByName('IN_DATE').Value := now;

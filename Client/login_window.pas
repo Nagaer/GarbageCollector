@@ -12,6 +12,10 @@ type
     Edit_password: TEdit;
     Label1: TLabel;
     Button_log_in: TButton;
+    Label2: TLabel;
+    Edit_adress: TEdit;
+    Label3: TLabel;
+    Edit_path: TEdit;
     procedure Button_log_inClick(Sender: TObject);
   private
     { Private declarations }
@@ -25,15 +29,17 @@ var
 implementation
 
 {$R *.dfm}
-
-uses Manager_window;
+    //192.168.43.115
+    //C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_TAXI_actual_changes.FDB
+uses Manager_window, operator_window_inh, common_db;
 
 procedure TLogin_Form.Button_log_inClick(Sender: TObject);
 var
 worker_id,role : integer;
 begin
     // Send request to bd
-
+    dm_db.edit_host(Edit_adress.Text,Edit_path.Text);
+    dm.open_all;
     with dm.spLogin do
     begin
 
@@ -54,20 +60,18 @@ begin
 
         // Got user role
 
+
           // If user is manager
           // open manager window
           if  dm.user.get_role = manager then begin
 
             Form_manager := TForm_manager.create(APPLICATION);
             Form_manager.ShowModal;
-            Login_Form.Close;
           end
           else if dm.user.get_role = oper then begin
-            Form_manager := TForm_manager.create(APPLICATION);
-            Form_manager.ShowModal;
-            Login_Form.Close;
+            Form_inh_operator := TForm_inh_operator.create(APPLICATION);
+            Form_inh_operator.ShowModal;
           end;
-
           // else open operator window
     end
     else  // If login refused

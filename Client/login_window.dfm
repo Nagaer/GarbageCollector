@@ -20,6 +20,20 @@ object Login_Form: TLogin_Form
     Height = 13
     Caption = #1042#1061#1054#1044
   end
+  object Label2: TLabel
+    Left = 40
+    Top = 45
+    Width = 63
+    Height = 13
+    Caption = #1040#1076#1088#1077#1089' '#1093#1086#1089#1090#1072
+  end
+  object Label3: TLabel
+    Left = 40
+    Top = 91
+    Width = 50
+    Height = 13
+    Caption = #1055#1091#1090#1100' '#1082' '#1073#1076
+  end
   object Edit_login: TEdit
     Left = 192
     Top = 64
@@ -44,5 +58,21 @@ object Login_Form: TLogin_Form
     Caption = #1042#1086#1081#1090#1080
     TabOrder = 2
     OnClick = Button_log_inClick
+  end
+  object Edit_adress: TEdit
+    Left = 40
+    Top = 64
+    Width = 121
+    Height = 21
+    TabOrder = 3
+    Text = '127.0.0.1'
+  end
+  object Edit_path: TEdit
+    Left = 40
+    Top = 110
+    Width = 121
+    Height = 21
+    TabOrder = 4
+    Text = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actualest_changes.FDB'
   end
 end

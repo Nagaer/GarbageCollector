@@ -51,6 +51,7 @@ type
     procedure menu_carClick(Sender: TObject);
     procedure menu_customerClick(Sender: TObject);
     procedure menu_addressClick(Sender: TObject);
+    procedure update;
   private
     { Private declarations }
     user : TUser;
@@ -67,6 +68,10 @@ implementation
 
 uses operator_window_inh, car_distributing_window, add_car_window, add_address_window, add_worker_window, add_customer_window;
 
+procedure TForm_manager.update;
+begin
+  dm.open_all;
+end;
 procedure TForm_manager.FormCreate(Sender: TObject);
 var toplevel:integer;
 begin
@@ -97,6 +102,7 @@ begin
   DBGrid_operators.Height := trunc(Height - toplevel);
   DBGrid_operators.Top := toplevel;
   label_operators.Left := trunc(Width*3/4)+5;
+  update;
 end;
 
 procedure TForm_manager.menu_diverClick(Sender: TObject);
@@ -109,6 +115,7 @@ begin
                         form_Add_Worker.label_name.text,
                         form_Add_Worker.label_surname.text);
    end;
+   update;
 end;
 
 procedure TForm_manager.menu_managerClick(Sender: TObject);
@@ -122,7 +129,7 @@ begin
                         form_Add_Worker.label_surname.text);
 
    end;
-
+   update;
 end;
 
 procedure TForm_manager.menu_operatorClick(Sender: TObject);
@@ -136,6 +143,7 @@ begin
                         form_Add_Worker.label_surname.text);
 
    end;
+   update;
 end;
 
 procedure TForm_manager.menu_addressClick(Sender: TObject);
@@ -148,6 +156,7 @@ begin
       StrToInt(form_Add_Address.label_number.Text),
       StrToInt(form_Add_Address.label_floor.Text));
    end;
+   update;
 end;
 
 procedure TForm_manager.menu_carClick(Sender: TObject);
@@ -173,6 +182,7 @@ begin
                           dm.TAddress_In.FieldByName('ID').Value,
                           form_Add_customer.label_phone.Text);
    end;
+   update;
 end;
 
 procedure TForm_manager.menu_distr_carsClick(Sender: TObject);
@@ -189,7 +199,7 @@ end;
 
 procedure TForm_manager.menu_updateClick(Sender: TObject);
 begin
-  dm.open_all;
+  update;
 end;
 
 procedure TForm_manager.menu_edit_carClick(Sender: TObject);
@@ -208,6 +218,7 @@ begin
                       form_Add_Car.label_model.Text);
    end;
    dm.TVehicle.Refresh;
+   update;
 end;
 
 procedure TForm_manager.menu_edit_driverClick(Sender: TObject);
@@ -230,7 +241,7 @@ begin
                          form_Add_Worker.label_surname.text);
 
    end;
-
+    update;
 end;
 
 procedure TForm_manager.menu_edit_managerClick(Sender: TObject);
@@ -252,7 +263,7 @@ begin
                          form_Add_Worker.label_surname.text);
 
    end;
-
+    update;
 end;
 
 procedure TForm_manager.menu_edit_operatorClick(Sender: TObject);
@@ -274,7 +285,7 @@ begin
                          form_Add_Worker.label_surname.text);
 
    end;
-
+   update;
 end;
 
 end.

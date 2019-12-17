@@ -11,6 +11,8 @@ object Form_abstract_operator: TForm_abstract_operator
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object IdUDPServer1: TIdUDPServer

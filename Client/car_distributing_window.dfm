@@ -3,7 +3,6 @@ inherited Form_car_distributing: TForm_car_distributing
   ClientHeight = 452
   ClientWidth = 758
   Menu = MainMenu1
-  OnCreate = FormCreate
   ExplicitWidth = 774
   ExplicitHeight = 511
   PixelsPerInch = 96

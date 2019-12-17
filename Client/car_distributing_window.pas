@@ -75,6 +75,8 @@ end;
 procedure TForm_car_distributing.FormCreate(Sender: TObject);
 begin
   inherited;
+  driver_updatable := true;
+  vehicle_updatable := true;
   curr_date := now;
 
   with panel_vehicle do begin

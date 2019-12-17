@@ -3,7 +3,6 @@ inherited Form_inh_operator: TForm_inh_operator
   ClientHeight = 681
   ClientWidth = 1156
   Menu = MainMenu1
-  OnCreate = FormCreate
   ExplicitWidth = 1172
   ExplicitHeight = 740
   PixelsPerInch = 96

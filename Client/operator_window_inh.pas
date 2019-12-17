@@ -158,6 +158,8 @@ constructor  TForm_inh_operator.Create(AOwner: TComponent);
 var i:integer;
 begin
   inherited;
+  order_updatable := true;
+  driver_updatable := true;
   panel_orders.OnDragOver := PanelDragOver;
   panel_orders.OnDragDrop := PanelDragDrop;
   update;

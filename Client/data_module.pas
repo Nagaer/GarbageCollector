@@ -51,7 +51,7 @@ implementation
 
 procedure Tdm.DataModuleCreate(Sender: TObject);
 begin
-  open_all;
+  //open_all;
 end;
 
 procedure  Tdm.open_all;

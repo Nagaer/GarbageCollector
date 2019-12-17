@@ -8,7 +8,8 @@ uses
   IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, generics.collections, order_interface,data_module
   ,order_class, Vcl.StdCtrls,IBX.IBTable, driver_class,driver_interface,panel_driver,
   Vcl.ExtCtrls,Panel_vehicle,vehicle_class,vehicle_interface;
-
+ const
+  ignore_status = [8,9];
 type
   TElem = (Order,Vehicle,Driver);
   TForm_abstract_operator = class(TForm)
@@ -18,11 +19,16 @@ type
     procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);virtual;abstract;
     procedure PanelDragDrop(Sender, Source: TObject; X, Y: Integer);virtual;abstract;
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
 
   protected
     order_list : TList<TOrder_Interface>;
     driver_list : TList<TDriver_interface>;
     vehicle_list : TList<TVehicle_interface>;
+    driver_updatable: boolean;
+    vehicle_updatable: boolean;
+    order_updatable: boolean;
     procedure update_orders;
     procedure update_drivers;
     procedure update_vehicles(date : TDate);
@@ -65,6 +71,8 @@ begin
     queue.InsertRange(0,order_list);
 
     for  i := 0 to count - 1 do    begin
+      if dm.TOrders.FieldByName('STATUS').AsInteger in ignore_status  then
+        continue;
 
       j:=0;
       while ( j < queue.Count) and ( queue[j].get_id  <> dm.TOrders.FieldByName('ID').AsInteger )  do
@@ -229,6 +237,17 @@ begin
     update_interface(vehicle);
 end;
 
+procedure TForm_abstract_operator.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  IdUDPServer1.Active := false;
+end;
+
+procedure TForm_abstract_operator.FormCreate(Sender: TObject);
+begin
+  IdUDPServer1.Active := true;
+end;
+
 procedure TForm_abstract_operator.IdUDPServer1UDPRead(
   AThread: TIdUDPListenerThread; const AData: TIdBytes;
   ABinding: TIdSocketHandle);
@@ -237,9 +256,13 @@ procedure TForm_abstract_operator.IdUDPServer1UDPRead(
 begin
   recieve := bytesToString(AData);
   case recieve[1] of
-  '1' : update_orders;
-  '2' : update_drivers;
-  '3' : update_vehicles(now);
+  '1' : if order_updatable then
+        update_orders;
+
+  '2' : if driver_updatable  then
+          update_drivers;
+  '3' : if vehicle_updatable then
+          update_vehicles(now);
   end;
 end;
 
@@ -252,6 +275,9 @@ begin
   order_list :=  TList<TOrder_Interface>.create;
   driver_list := TList<TDriver_interface>.create;
   vehicle_list := TList<TVehicle_interface>.create;
+  driver_updatable := false;
+  vehicle_updatable := false;
+  order_updatable := false;
 end;
 
 end.

@@ -16,30 +16,54 @@ object form_Add_Worker: Tform_Add_Worker
   object Label1: TLabel
     Left = 56
     Top = 221
-    Width = 80
+    Width = 90
     Height = 13
     Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label2: TLabel
     Left = 56
     Top = 66
-    Width = 64
+    Width = 74
     Height = 13
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1080#1084#1103
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label3: TLabel
     Left = 56
     Top = 114
-    Width = 93
+    Width = 107
     Height = 13
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1092#1072#1084#1080#1083#1080#1102
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label4: TLabel
     Left = 56
     Top = 162
-    Width = 72
+    Width = 81
     Height = 13
     Caption = #1042#1074#1077#1076#1080#1090#1077' '#1086#1087#1099#1090
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object dtp_DOB: TDateTimePicker
     Left = 56
@@ -48,6 +72,12 @@ object form_Add_Worker: Tform_Add_Worker
     Height = 21
     Date = 43809.000000000000000000
     Time = 0.603868877311470000
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
   end
   object BitBtn1: TBitBtn
@@ -55,8 +85,14 @@ object form_Add_Worker: Tform_Add_Worker
     Top = 198
     Width = 75
     Height = 25
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
     Kind = bkOK
     NumGlyphs = 2
+    ParentFont = False
     TabOrder = 1
   end
   object label_name: TEdit
@@ -64,6 +100,12 @@ object form_Add_Worker: Tform_Add_Worker
     Top = 85
     Width = 121
     Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 2
     Text = #1048#1084#1103
   end
@@ -72,6 +114,12 @@ object form_Add_Worker: Tform_Add_Worker
     Top = 133
     Width = 121
     Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 3
     Text = #1060#1072#1084#1080#1083#1080#1103
   end
@@ -80,6 +128,12 @@ object form_Add_Worker: Tform_Add_Worker
     Top = 181
     Width = 121
     Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 4
     Text = #1054#1087#1099#1090
   end

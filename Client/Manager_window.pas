@@ -52,6 +52,10 @@ type
     procedure menu_customerClick(Sender: TObject);
     procedure menu_addressClick(Sender: TObject);
     procedure update;
+    procedure DataSource_carsDataChange(Sender: TObject; Field: TField);
+    procedure DataSource_driversDataChange(Sender: TObject; Field: TField);
+    procedure DataSource_managersDataChange(Sender: TObject; Field: TField);
+    procedure DataSource_operatorsDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     user : TUser;
@@ -72,36 +76,79 @@ procedure TForm_manager.update;
 begin
   dm.open_all;
 end;
+procedure TForm_manager.DataSource_carsDataChange(Sender: TObject;
+  Field: TField);
+begin
+    ShowScrollBar(DBGrid_cars.Handle, SB_BOTH, False);
+    ShowScrollBar(DBGrid_cars.Handle, sb_Horz , False);
+end;
+
+procedure TForm_manager.DataSource_driversDataChange(Sender: TObject;
+  Field: TField);
+begin
+    ShowScrollBar(DBGrid_drivers.Handle, SB_BOTH, False);
+    ShowScrollBar(DBGrid_cars.Handle, sb_Horz , False);
+end;
+
+procedure TForm_manager.DataSource_managersDataChange(Sender: TObject;
+  Field: TField);
+begin
+    ShowScrollBar(DBGrid_managers.Handle, SB_BOTH, False);
+    ShowScrollBar(DBGrid_cars.Handle, sb_Horz , False);
+end;
+
+procedure TForm_manager.DataSource_operatorsDataChange(Sender: TObject;
+  Field: TField);
+begin
+    ShowScrollBar(DBGrid_operators.Handle, SB_BOTH, False);
+    ShowScrollBar(DBGrid_cars.Handle, sb_Horz , False);
+end;
+
 procedure TForm_manager.FormCreate(Sender: TObject);
-var toplevel:integer;
+var toplevel, underlevel, i:integer;
 begin
   inherited;
-  toplevel := 40;
+  Screen.MenuFont.Name := 'Verdana';
+  toplevel := 25;
+  underlevel := trunc(screen.Height/10+10);
   Width := screen.Width;
   Height := screen.Height;
   DBGrid_cars.Width := trunc(Width/4);
   DBGrid_cars.Left := 0;
-  DBGrid_cars.Height := trunc(Height - toplevel);
+  DBGrid_cars.Height := trunc(Height - toplevel - underlevel);
   DBGrid_cars.Top := toplevel;
+  for i := 0 to 2 do begin
+     DBGrid_cars.Columns[i].Width := trunc(DBGrid_cars.Width/3-6);
+  end;
   label_cars.Left := 5;
 
   DBGrid_drivers.Width := trunc(Width/4);
   DBGrid_drivers.Left := trunc(Width/4);
-  DBGrid_drivers.Height := trunc(Height - toplevel);
+  DBGrid_drivers.Height := trunc(Height - toplevel - underlevel);
   DBGrid_drivers.Top := toplevel;
+  for i := 0 to 3 do begin
+     DBGrid_drivers.Columns[i].Width := trunc(DBGrid_drivers.Width/4-6);
+  end;
   label_drivers.Left := trunc(Width/4)+5;
 
   DBGrid_managers.Width:= trunc(Width/4);
   DBGrid_managers.Left := trunc(Width*2/4);
-  DBGrid_managers.Height := trunc(Height - toplevel);
+  DBGrid_managers.Height := trunc(Height - toplevel - underlevel);
   DBGrid_managers.Top := toplevel;
+  for i := 0 to 3 do begin
+     DBGrid_managers.Columns[i].Width := trunc(DBGrid_managers.Width/4-6);
+  end;
   label_managers.Left := trunc(Width*2/4)+5;
 
   DBGrid_operators.Width := trunc(Width/4);
   DBGrid_operators.Left := trunc(Width*3/4);
-  DBGrid_operators.Height := trunc(Height - toplevel);
+  DBGrid_operators.Height := trunc(Height - toplevel - underlevel);
   DBGrid_operators.Top := toplevel;
+  for i := 0 to 3 do begin
+     DBGrid_operators.Columns[i].Width := trunc(DBGrid_operators.Width/4-6);
+  end;
   label_operators.Left := trunc(Width*3/4)+5;
+
   update;
 end;
 

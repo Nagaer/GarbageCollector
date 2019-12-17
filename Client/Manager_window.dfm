@@ -8,7 +8,7 @@ object Form_manager: TForm_manager
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Name = 'Verdana'
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
@@ -19,78 +19,156 @@ object Form_manager: TForm_manager
   object Label_drivers: TLabel
     Left = 288
     Top = 0
-    Width = 49
+    Width = 56
     Height = 13
     Caption = #1042#1086#1076#1080#1090#1077#1083#1080
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label_cars: TLabel
-    Left = 0
+    Left = 8
     Top = 0
-    Width = 42
+    Width = 48
     Height = 13
     Caption = #1052#1072#1096#1080#1085#1099
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label_managers: TLabel
-    Left = 568
+    Left = 500
     Top = 0
-    Width = 61
+    Width = 70
     Height = 13
     Caption = #1052#1077#1085#1077#1076#1078#1077#1088#1099
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object Label_operators: TLabel
-    Left = 862
+    Left = 576
     Top = 0
-    Width = 58
+    Width = 65
     Height = 13
     Caption = #1054#1087#1077#1088#1072#1090#1086#1088#1099
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object DBGrid_drivers: TDBGrid
-    Left = 288
+    Left = 247
     Top = 19
     Width = 250
-    Height = 382
+    Height = 174
     DataSource = DataSource_drivers
     ReadOnly = True
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
+    TitleFont.Name = 'Verdana'
     TitleFont.Style = []
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'SURNAME'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Title.Alignment = taCenter
         Title.Caption = #1060#1072#1084#1080#1083#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'NAME'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Title.Alignment = taCenter
         Title.Caption = #1048#1084#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Width = 54
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'DOB'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Title.Alignment = taCenter
         Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Width = 31
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'EXPERIENCE'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = []
+        Title.Alignment = taCenter
         Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end>
   end
   object DBGrid_cars: TDBGrid
-    Left = 0
+    Left = 8
     Top = 19
-    Width = 250
-    Height = 382
+    Width = 233
+    Height = 174
     DataSource = DataSource_cars
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     ReadOnly = True
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -100,70 +178,131 @@ object Form_manager: TForm_manager
     TitleFont.Style = []
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'MARKA'
+        Title.Alignment = taCenter
         Title.Caption = #1052#1072#1088#1082#1072
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Width = 60
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'MODEL'
+        Title.Alignment = taCenter
         Title.Caption = #1052#1086#1076#1077#1083#1100
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'NUMBER'
+        Title.Alignment = taCenter
         Title.Caption = #1053#1086#1084#1077#1088
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -12
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end>
   end
   object DBGrid_managers: TDBGrid
-    Left = 568
-    Top = 19
-    Width = 250
-    Height = 382
+    Left = 8
+    Top = 199
+    Width = 233
+    Height = 202
     DataSource = DataSource_managers
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     ReadOnly = True
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
+    TitleFont.Name = 'Verdana'
     TitleFont.Style = []
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'SURNAME'
+        Title.Alignment = taCenter
         Title.Caption = #1060#1072#1084#1080#1083#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'NAME'
+        Title.Alignment = taCenter
         Title.Caption = #1048#1084#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'DOB'
+        Title.Alignment = taCenter
         Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'EXPERIENCE'
+        Title.Alignment = taCenter
         Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end>
   end
   object DBGrid_operators: TDBGrid
-    Left = 862
-    Top = 19
+    Left = 247
+    Top = 199
     Width = 250
-    Height = 382
+    Height = 202
     DataSource = DataSource_operators
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
     ReadOnly = True
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
@@ -173,27 +312,55 @@ object Form_manager: TForm_manager
     TitleFont.Style = []
     Columns = <
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'SURNAME'
+        Title.Alignment = taCenter
         Title.Caption = #1060#1072#1084#1080#1083#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'NAME'
+        Title.Alignment = taCenter
         Title.Caption = #1048#1084#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'DOB'
+        Title.Alignment = taCenter
         Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end
       item
+        Alignment = taCenter
         Expanded = False
         FieldName = 'EXPERIENCE'
-        Title.Caption = #1054#1087#1099#1090
+        Title.Alignment = taCenter
+        Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -9
+        Title.Font.Name = 'Verdana'
+        Title.Font.Style = []
         Visible = True
       end>
   end
@@ -261,22 +428,26 @@ object Form_manager: TForm_manager
   end
   object DataSource_drivers: TDataSource
     DataSet = dm.QDrivers
+    OnDataChange = DataSource_driversDataChange
     Left = 424
     Top = 120
   end
   object DataSource_cars: TDataSource
     DataSet = dm.TVehicle
+    OnDataChange = DataSource_carsDataChange
     Left = 144
     Top = 136
   end
   object DataSource_managers: TDataSource
     DataSet = dm.QManagers
-    Left = 640
-    Top = 128
+    OnDataChange = DataSource_managersDataChange
+    Left = 120
+    Top = 280
   end
   object DataSource_operators: TDataSource
     DataSet = dm.QOperators
-    Left = 1008
-    Top = 168
+    OnDataChange = DataSource_operatorsDataChange
+    Left = 368
+    Top = 280
   end
 end

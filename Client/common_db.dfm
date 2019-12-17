@@ -4,7 +4,9 @@ object dm_db: Tdm_db
   Width = 308
   object IBDatabase_read: TIBDatabase
     Connected = True
-    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actualest_changes.FDB'
+    DatabaseName = 
+      'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actualest_ch' +
+      'anges.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
@@ -30,7 +32,9 @@ object dm_db: Tdm_db
   end
   object IBDatabase_edit: TIBDatabase
     Connected = True
-    DatabaseName = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actualest_changes.FDB'
+    DatabaseName = 
+      'D:\Delphi Collector 2\GarbageCollector\FREIGHT_TAXI_actualest_ch' +
+      'anges.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'

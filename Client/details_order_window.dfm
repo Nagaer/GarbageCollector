@@ -18,79 +18,145 @@ object form_Details_Order: Tform_Details_Order
   object label_customer_surname_and_name: TLabel
     Left = 32
     Top = 37
-    Width = 175
+    Width = 211
     Height = 13
     Caption = 'label_customer_surname_and_name'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_customer_phone: TLabel
     Left = 32
     Top = 72
-    Width = 108
+    Width = 129
     Height = 13
     Caption = 'label_customer_phone'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_customer_address: TLabel
     Left = 32
     Top = 56
-    Width = 116
+    Width = 139
     Height = 13
     Caption = 'label_customer_address'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_weight: TLabel
     Left = 32
     Top = 104
-    Width = 60
+    Width = 71
     Height = 13
     Caption = 'label_weight'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_from_address: TLabel
     Left = 32
     Top = 136
-    Width = 94
+    Width = 113
     Height = 13
     Caption = 'label_from_address'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_to_address: TLabel
     Left = 32
     Top = 155
-    Width = 82
+    Width = 97
     Height = 13
     Caption = 'label_to_address'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_dod: TLabel
     Left = 32
     Top = 174
-    Width = 46
+    Width = 55
     Height = 13
     Caption = 'label_dod'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_driver: TLabel
     Left = 32
     Top = 200
-    Width = 56
+    Width = 68
     Height = 13
     Caption = 'label_driver'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_operator: TLabel
     Left = 32
     Top = 219
-    Width = 70
+    Width = 83
     Height = 13
     Caption = 'label_operator'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_stevedors: TLabel
     Left = 32
     Top = 238
-    Width = 76
+    Width = 90
     Height = 13
     Caption = 'label_stevedors'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object label_price: TLabel
     Left = 32
     Top = 257
-    Width = 51
+    Width = 62
     Height = 13
     Caption = 'label_price'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
   end
   object BitBtn1: TBitBtn
     Left = 8
@@ -98,8 +164,14 @@ object form_Details_Order: Tform_Details_Order
     Width = 153
     Height = 25
     Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100' '#1079#1072#1082#1072#1079
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
     Kind = bkOK
     NumGlyphs = 2
+    ParentFont = False
     TabOrder = 0
     Visible = False
     OnClick = BitBtn1Click

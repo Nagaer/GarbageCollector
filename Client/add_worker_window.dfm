@@ -65,6 +65,32 @@ object form_Add_Worker: Tform_Add_Worker
     Font.Style = []
     ParentFont = False
   end
+  object Label5: TLabel
+    Left = 183
+    Top = 66
+    Width = 86
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1083#1086#1075#1080#1085
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 183
+    Top = 114
+    Width = 95
+    Height = 13
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1087#1072#1088#1086#1083#1100
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+  end
   object dtp_DOB: TDateTimePicker
     Left = 56
     Top = 240
@@ -136,5 +162,33 @@ object form_Add_Worker: Tform_Add_Worker
     ParentFont = False
     TabOrder = 4
     Text = #1054#1087#1099#1090
+  end
+  object label_login: TEdit
+    Left = 183
+    Top = 85
+    Width = 121
+    Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    Text = #1051#1086#1075#1080#1085
+  end
+  object label_password: TEdit
+    Left = 183
+    Top = 133
+    Width = 121
+    Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
+    Text = #1055#1072#1088#1086#1083#1100
   end
 end

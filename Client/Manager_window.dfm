@@ -86,11 +86,6 @@ object Form_manager: TForm_manager
         Alignment = taCenter
         Expanded = False
         FieldName = 'SURNAME'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = #1060#1072#1084#1080#1083#1080#1103
         Title.Font.Charset = DEFAULT_CHARSET
@@ -104,11 +99,6 @@ object Form_manager: TForm_manager
         Alignment = taCenter
         Expanded = False
         FieldName = 'NAME'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = #1048#1084#1103
         Title.Font.Charset = DEFAULT_CHARSET
@@ -123,11 +113,6 @@ object Form_manager: TForm_manager
         Alignment = taCenter
         Expanded = False
         FieldName = 'DOB'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = #1044#1072#1090#1072' '#1087#1088#1080#1085#1103#1090#1080#1103
         Title.Font.Charset = DEFAULT_CHARSET
@@ -142,11 +127,6 @@ object Form_manager: TForm_manager
         Alignment = taCenter
         Expanded = False
         FieldName = 'EXPERIENCE'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = []
         Title.Alignment = taCenter
         Title.Caption = #1054#1087#1099#1090' '#1088#1072#1073#1086#1090#1099
         Title.Font.Charset = DEFAULT_CHARSET

@@ -14,6 +14,8 @@ type
     label_dob: TLabel;
     label_exp: TLabel;
     label_id: TLabel;
+    label_login: TLabel;
+    label_password: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -57,6 +59,12 @@ begin
         form_Details_Worker.label_role.Caption := 'Водитель';
     end;
     dm.QWorker_By_Id.Close;
+
+    dm.QLogin_By_Id.ParamByName('ID_LOGIN').Value := id_worker;
+    dm.QLogin_By_Id.Open;
+    form_Details_Worker.label_login.Caption := 'Логин: ' + dm.QLogin_By_Id.FieldByName('LOGIN').Value;
+    form_Details_Worker.label_password.Caption := 'Пароль: ' + dm.QLogin_By_Id.FieldByName('PASSWORD_').Value;
+    dm.QLogin_By_Id.Close;
 end;
 
 end.

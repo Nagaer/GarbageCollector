@@ -26,10 +26,11 @@ type
     TAddress_Out: TIBTable;
     QCustomer_By_Id: TIBQuery;
     QCar_By_Id: TIBQuery;
-    QWorker_By_Id: TIBQuery;
     QOrder_By_Id: TIBQuery;
     QAddress_By_Id: TIBQuery;
     spEdit_Order_Status: TIBStoredProc;
+    QWorker_By_Id: TIBQuery;
+    QLogin_By_Id: TIBQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

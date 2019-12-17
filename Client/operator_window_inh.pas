@@ -88,13 +88,13 @@ begin
   form_add_order.showmodal;
   if form_add_order.ModalResult = mrOk then  begin
       dm_add.add_order(dm.QCustomers.FieldByName('ID').Value,
-      StrtoInt(form_add_order.label_weight.Text),
-      dm.TAddress_In.FieldByName('ID').Value,
-      dm.TAddress_Out.FieldByName('ID').Value,
-      form_add_order.dtp_delivery.DateTime,
-      dm.user.get_id,
-      strToInt(form_add_order.label_stevedore.Text),
-      strToInt(form_add_order.label_price.Text));
+                       StrtoInt(form_add_order.label_weight.Text),
+                       dm.TAddress_In.FieldByName('ID').Value,
+                       dm.TAddress_Out.FieldByName('ID').Value,
+                       form_add_order.dtp_delivery.DateTime,
+                       dm.user.get_id,
+                       strToInt(form_add_order.label_stevedore.Text),
+                       strToInt(form_add_order.label_price.Text));
    end;
    update;
 end;

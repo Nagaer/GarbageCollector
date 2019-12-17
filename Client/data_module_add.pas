@@ -20,8 +20,8 @@ type
   public
     procedure add_car(mark:string; number:string; model:string);
     procedure edit_car(id:integer; mark:string; number:string; model:string);
-    procedure add_worker(role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
-    procedure edit_worker(id:integer; status:integer; role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
+    procedure add_worker(role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string; worker_login:string; worker_password:string);
+    procedure edit_worker(id:integer; status:integer; role_:integer; experience:integer; dob:tdatetime; worker_name:string; worker_surname:string; worker_login:string; worker_password:string);
     procedure add_order(customer_id:integer; weight:integer; from_id:integer; to_id:integer; delivery:tdatetime; operator_id:integer; num_stevedore:integer; price:integer);
     procedure add_customer(customer_name:string; customer_surname:string; address_id:integer; phone:string);
     procedure add_address(city:string; street:string; number:integer; floor:integer);
@@ -71,7 +71,8 @@ begin
 end;
 
 procedure Tdm_add.add_worker(role_:integer; experience:integer; dob:tdatetime;
-                             worker_name:string; worker_surname:string);
+                             worker_name:string; worker_surname:string;
+                             worker_login:string; worker_password:string);
 begin
 with dm_add.spAdd_Worker do
   begin
@@ -81,6 +82,8 @@ with dm_add.spAdd_Worker do
   ParamByName('DOB').AsDate:= dob;
   ParamByName('NAME').Value:= worker_name;
   ParamByName('SURNAME').Value:= worker_surname;
+  ParamByName('LOGIN').Value:= worker_login;
+  ParamByName('PASSWORD_').Value:= worker_password;
 
   // Execute the procedure
   if not Transaction.InTransaction then
@@ -91,7 +94,8 @@ with dm_add.spAdd_Worker do
 end;
 
 procedure Tdm_add.edit_worker(id:integer; status:integer; role_:integer;
-      experience:integer; dob:tdatetime; worker_name:string; worker_surname:string);
+      experience:integer; dob:tdatetime; worker_name:string; worker_surname:string;
+                             worker_login:string; worker_password:string);
 begin
 with dm_add.spEdit_Worker do
   begin
@@ -103,6 +107,8 @@ with dm_add.spEdit_Worker do
   ParamByName('DOB').AsDate:= dob;
   ParamByName('NAME').Value:= worker_name;
   ParamByName('SURNAME').Value:= worker_surname;
+  ParamByName('LOGIN').Value:= worker_login;
+  ParamByName('PASSWORD_').Value:= worker_password;
 
   // Execute the procedure
   if not Transaction.InTransaction then

@@ -160,7 +160,9 @@ begin
       dm_add.add_worker(2, StrtoInt(form_Add_Worker.label_exp.Text),
                         form_Add_Worker.dtp_DOB.datetime,
                         form_Add_Worker.label_name.text,
-                        form_Add_Worker.label_surname.text);
+                        form_Add_Worker.label_surname.text,
+                        form_Add_Worker.label_login.text,
+                        form_Add_Worker.label_password.text);
    end;
    update;
 end;
@@ -173,7 +175,9 @@ begin
       dm_add.add_worker(0, StrtoInt(form_Add_Worker.label_exp.Text),
                         form_Add_Worker.dtp_DOB.datetime,
                         form_Add_Worker.label_name.text,
-                        form_Add_Worker.label_surname.text);
+                        form_Add_Worker.label_surname.text,
+                        form_Add_Worker.label_login.text,
+                        form_Add_Worker.label_password.text);
 
    end;
    update;
@@ -187,7 +191,9 @@ begin
       dm_add.add_worker(1, StrtoInt(form_Add_Worker.label_exp.Text),
                         form_Add_Worker.dtp_DOB.datetime,
                         form_Add_Worker.label_name.text,
-                        form_Add_Worker.label_surname.text);
+                        form_Add_Worker.label_surname.text,
+                        form_Add_Worker.label_login.text,
+                        form_Add_Worker.label_password.text);
 
    end;
    update;
@@ -199,9 +205,9 @@ begin
   form_Add_Address.ShowModal;
   if form_Add_Address.ModalResult = mrOk then  begin
       dm_add.add_address(form_Add_Address.label_city.Text,
-      form_Add_Address.label_street.Text,
-      StrToInt(form_Add_Address.label_number.Text),
-      StrToInt(form_Add_Address.label_floor.Text));
+                         form_Add_Address.label_street.Text,
+                         StrToInt(form_Add_Address.label_number.Text),
+                         StrToInt(form_Add_Address.label_floor.Text));
    end;
    update;
 end;
@@ -276,6 +282,8 @@ begin
     label_surname.Text := dm.QDrivers.FieldByName('SURNAME').Value;
     label_exp.Text := dm.QDrivers.FieldByName('EXPERIENCE').Value;
     dtp_DOB.DateTime := dm.QDrivers.FieldByName('DOB').AsDateTime;
+    label_login.Text := dm.QOperators.FieldByName('LOGIN').Value;
+    label_password.Text := dm.QOperators.FieldByName('PASSWORD_').Value;
     showmodal;
   end;
 
@@ -285,7 +293,9 @@ begin
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
                          form_Add_Worker.label_name.text,
-                         form_Add_Worker.label_surname.text);
+                         form_Add_Worker.label_surname.text,
+                         form_Add_Worker.label_login.text,
+                         form_Add_Worker.label_password.text);
 
    end;
     update;
@@ -299,6 +309,8 @@ begin
     label_surname.Text := dm.QManagers.FieldByName('SURNAME').Value;
     label_exp.Text := dm.QManagers.FieldByName('EXPERIENCE').Value;
     dtp_DOB.DateTime := dm.QManagers.FieldByName('DOB').AsDateTime;
+    label_login.Text := dm.QOperators.FieldByName('LOGIN').Value;
+    label_password.Text := dm.QOperators.FieldByName('PASSWORD_').Value;
     showmodal;
   end;
   if form_Add_Worker.ModalResult = mrOk then  begin
@@ -307,7 +319,9 @@ begin
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
                          form_Add_Worker.label_name.text,
-                         form_Add_Worker.label_surname.text);
+                         form_Add_Worker.label_surname.text,
+                         form_Add_Worker.label_login.text,
+                         form_Add_Worker.label_password.text);
 
    end;
     update;
@@ -321,6 +335,8 @@ begin
     label_surname.Text := dm.QOperators.FieldByName('SURNAME').Value;
     label_exp.Text := dm.QOperators.FieldByName('EXPERIENCE').Value;
     dtp_DOB.DateTime := dm.QOperators.FieldByName('DOB').AsDateTime;
+    label_login.Text := dm.QOperators.FieldByName('LOGIN').Value;
+    label_password.Text := dm.QOperators.FieldByName('PASSWORD_').Value;
     showmodal;
   end;
   if form_Add_Worker.ModalResult = mrOk then  begin
@@ -329,7 +345,9 @@ begin
                          StrtoInt(form_Add_Worker.label_exp.Text),
                          form_Add_Worker.dtp_DOB.datetime,
                          form_Add_Worker.label_name.text,
-                         form_Add_Worker.label_surname.text);
+                         form_Add_Worker.label_surname.text,
+                         form_Add_Worker.label_login.text,
+                         form_Add_Worker.label_password.text);
 
    end;
    update;

@@ -18,6 +18,10 @@ type
     label_name: TEdit;
     label_surname: TEdit;
     label_exp: TEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    label_login: TEdit;
+    label_password: TEdit;
   private
     { Private declarations }
   public

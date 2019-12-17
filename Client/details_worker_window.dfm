@@ -17,7 +17,7 @@ object form_Details_Worker: Tform_Details_Worker
   TextHeight = 13
   object label_name: TLabel
     Left = 104
-    Top = 75
+    Top = 51
     Width = 66
     Height = 13
     Caption = 'label_name'
@@ -30,7 +30,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_surname: TLabel
     Left = 104
-    Top = 59
+    Top = 35
     Width = 84
     Height = 13
     Caption = 'label_surname'
@@ -43,7 +43,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_role: TLabel
     Left = 104
-    Top = 102
+    Top = 78
     Width = 56
     Height = 13
     Caption = 'label_role'
@@ -56,7 +56,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_dob: TLabel
     Left = 104
-    Top = 128
+    Top = 104
     Width = 55
     Height = 13
     Caption = 'label_dob'
@@ -69,7 +69,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_exp: TLabel
     Left = 104
-    Top = 147
+    Top = 123
     Width = 55
     Height = 13
     Caption = 'label_exp'
@@ -82,7 +82,7 @@ object form_Details_Worker: Tform_Details_Worker
   end
   object label_id: TLabel
     Left = 104
-    Top = 40
+    Top = 16
     Width = 44
     Height = 13
     Caption = 'label_id'
@@ -92,5 +92,19 @@ object form_Details_Worker: Tform_Details_Worker
     Font.Name = 'Verdana'
     Font.Style = []
     ParentFont = False
+  end
+  object label_login: TLabel
+    Left = 104
+    Top = 152
+    Width = 50
+    Height = 13
+    Caption = 'label_login'
+  end
+  object label_password: TLabel
+    Left = 104
+    Top = 171
+    Width = 74
+    Height = 13
+    Caption = 'label_password'
   end
 end

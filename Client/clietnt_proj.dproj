@@ -105,12 +105,10 @@
         <DCCReference Include="Order_class.pas"/>
         <DCCReference Include="abstsract_operator_window.pas">
             <Form>Form_abstract_operator</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="order_interface.pas"/>
         <DCCReference Include="operator_window_inh.pas">
             <Form>Form_inh_operator</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Driver_class.pas"/>
         <DCCReference Include="Human_class.pas"/>
@@ -118,65 +116,51 @@
         <DCCReference Include="driver_interface.pas"/>
         <DCCReference Include="test_window.pas">
             <Form>form_test</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Manager_window.pas">
             <Form>Form_manager</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="add_order_window.pas">
             <Form>Form_add_order</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="car_distributing_window.pas">
             <Form>Form_car_distributing</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Vehicle_class.pas"/>
         <DCCReference Include="vehicle_interface.pas"/>
         <DCCReference Include="Panel_vehicle.pas"/>
         <DCCReference Include="date_picker_window.pas">
             <Form>Form_date_picker</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="User_class.pas"/>
         <DCCReference Include="data_module_add.pas">
             <Form>dm_add</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="add_car_window.pas">
             <Form>form_Add_Car</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="add_worker_window.pas">
             <Form>form_Add_Worker</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Colored_panel_class.pas"/>
         <DCCReference Include="add_customer_window.pas">
             <Form>form_Add_customer</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="add_address_window.pas">
             <Form>form_Add_Address</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="details_car_window.pas">
             <Form>form_Details_Car</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="details_worker_window.pas">
             <Form>form_Details_Worker</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="details_order_window.pas">
             <Form>form_Details_Order</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="common_db.pas">
             <Form>dm_db</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="statuses.pas"/>
@@ -240,7 +224,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_clietnt_proj\Order_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_clietnt_proj\operator_window_inh\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -354,13 +338,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_clietnt_proj\Human_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_clietnt_proj\Order_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ModelSupport_clietnt_proj\operator_window_inh\default.txvpck" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="ModelSupport_clietnt_proj\Human_class\default.txvpck" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

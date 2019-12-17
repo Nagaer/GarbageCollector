@@ -27,6 +27,7 @@ type TPanel_order = Class(TColoredPanel,TOrder_Interface,IInterface)
 
 
   function get_driver_id : integer;
+  function get_date_delivery : tdatetime;
 
 
   constructor Create(AOwner: TComponent;Porder : TOrder);
@@ -44,6 +45,11 @@ end;
 function TPanel_order.get_status;
 begin
   get_status := order.get_status;
+end;
+
+function TPanel_order.get_date_delivery;
+begin
+  get_date_delivery := order.get_date_delivery;
 end;
 
 procedure TPanel_order.update_order(updated_order : TOrder);

@@ -10,8 +10,8 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'ORDERS'
     UniDirectional = False
-    Left = 328
-    Top = 56
+    Left = 208
+    Top = 72
   end
   object TWorkers: TIBTable
     Database = dm_db.IBDatabase_read
@@ -20,15 +20,15 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'WORKERS'
     UniDirectional = False
-    Left = 328
-    Top = 144
+    Left = 208
+    Top = 120
   end
   object spEDIT_ORDER_SET_DRIVER: TIBStoredProc
     Database = dm_db.IBDatabase_read
     Transaction = dm_db.IBTransaction_read
     StoredProcName = 'EDIT_ORDER_SET_STATUS'
-    Left = 320
-    Top = 272
+    Left = 216
+    Top = 264
     ParamData = <
       item
         DataType = ftInteger
@@ -50,8 +50,8 @@ object dm: Tdm
     Database = dm_db.IBDatabase_read
     Transaction = dm_db.IBTransaction_read
     StoredProcName = 'ADD_ORDER'
-    Left = 456
-    Top = 248
+    Left = 288
+    Top = 312
     ParamData = <
       item
         DataType = ftInteger
@@ -126,8 +126,8 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'GARAGE'
     UniDirectional = False
-    Left = 416
-    Top = 64
+    Left = 208
+    Top = 168
   end
   object TNew_day_car_delivery: TIBTable
     Database = dm_db.IBDatabase_read
@@ -136,8 +136,8 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'NEW_DAY_CAR_DRIVER'
     UniDirectional = False
-    Left = 432
-    Top = 144
+    Left = 288
+    Top = 168
   end
   object QDriver_id_from_vehicle_day: TIBQuery
     Database = dm_db.IBDatabase_read
@@ -148,8 +148,8 @@ object dm: Tdm
     SQL.Strings = (
       'select ID_DRIVER, DATE_ from new_day_car_driver'
       'where id_car = :IN_ID_VEHICLE and date_ = :IN_DATE;')
-    Left = 520
-    Top = 64
+    Left = 72
+    Top = 408
     ParamData = <
       item
         DataType = ftInteger
@@ -166,8 +166,8 @@ object dm: Tdm
     Database = dm_db.IBDatabase_read
     Transaction = dm_db.IBTransaction_read
     StoredProcName = 'BEGIN_DAY_DRIVER'
-    Left = 544
-    Top = 256
+    Left = 368
+    Top = 312
     ParamData = <
       item
         DataType = ftInteger
@@ -184,8 +184,8 @@ object dm: Tdm
     Database = dm_db.IBDatabase_read
     Transaction = dm_db.IBTransaction_read
     StoredProcName = 'LOGIN'
-    Left = 176
-    Top = 272
+    Left = 216
+    Top = 312
     ParamData = <
       item
         DataType = ftInteger
@@ -221,8 +221,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from workers where role_ = 2;')
-    Left = 224
-    Top = 176
+    Left = 40
+    Top = 264
   end
   object QManagers: TIBQuery
     Database = dm_db.IBDatabase_read
@@ -232,8 +232,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from workers where role_ = 0;')
-    Left = 96
-    Top = 192
+    Left = 40
+    Top = 168
   end
   object QOperators: TIBQuery
     Database = dm_db.IBDatabase_read
@@ -243,8 +243,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from workers where role_ = 1;')
-    Left = 104
-    Top = 320
+    Left = 40
+    Top = 216
   end
   object QCustomers: TIBQuery
     Database = dm_db.IBDatabase_read
@@ -254,8 +254,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from customers;')
-    Left = 232
-    Top = 360
+    Left = 40
+    Top = 312
   end
   object TAddress_In: TIBTable
     Database = dm_db.IBDatabase_read
@@ -264,8 +264,8 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'ADDRESS'
     UniDirectional = False
-    Left = 448
-    Top = 376
+    Left = 288
+    Top = 72
   end
   object TAddress_Out: TIBTable
     Database = dm_db.IBDatabase_read
@@ -274,8 +274,8 @@ object dm: Tdm
     CachedUpdates = False
     TableName = 'ADDRESS'
     UniDirectional = False
-    Left = 576
-    Top = 384
+    Left = 288
+    Top = 120
   end
   object QCustomer_By_Id: TIBQuery
     Database = dm_db.IBDatabase_read
@@ -285,8 +285,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'Select * from customers where id = :ID_CUSTOMER;')
-    Left = 512
-    Top = 120
+    Left = 120
+    Top = 360
     ParamData = <
       item
         DataType = ftInteger
@@ -302,29 +302,12 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from garage where id = :id_car;')
-    Left = 640
-    Top = 144
+    Left = 104
+    Top = 216
     ParamData = <
       item
         DataType = ftInteger
         Name = 'id_car'
-        ParamType = ptInput
-      end>
-  end
-  object QWorker_By_Id: TIBQuery
-    Database = dm_db.IBDatabase_read
-    Transaction = dm_db.IBTransaction_read
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from workers where id = :id_worker;')
-    Left = 648
-    Top = 192
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'id_worker'
         ParamType = ptInput
       end>
   end
@@ -336,8 +319,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from orders where id = :id_order;')
-    Left = 656
-    Top = 288
+    Left = 104
+    Top = 264
     ParamData = <
       item
         DataType = ftInteger
@@ -353,8 +336,8 @@ object dm: Tdm
     ParamCheck = True
     SQL.Strings = (
       'select * from address where id = :id_address;')
-    Left = 656
-    Top = 376
+    Left = 32
+    Top = 360
     ParamData = <
       item
         DataType = ftInteger
@@ -366,8 +349,8 @@ object dm: Tdm
     Database = dm_db.IBDatabase_read
     Transaction = dm_db.IBTransaction_read
     StoredProcName = 'EDIT_ORDER_SET_STATUS'
-    Left = 328
-    Top = 384
+    Left = 352
+    Top = 264
     ParamData = <
       item
         DataType = ftInteger
@@ -382,6 +365,40 @@ object dm: Tdm
       item
         DataType = ftInteger
         Name = 'ID_WORKERS'
+        ParamType = ptInput
+      end>
+  end
+  object QWorker_By_Id: TIBQuery
+    Database = dm_db.IBDatabase_read
+    Transaction = dm_db.IBTransaction_read
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from workers where id = :id_worker;')
+    Left = 104
+    Top = 312
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'id_worker'
+        ParamType = ptUnknown
+      end>
+  end
+  object QLogin_By_Id: TIBQuery
+    Database = dm_db.IBDatabase_read
+    Transaction = dm_db.IBTransaction_edit
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from logging_in where id = :id_login;')
+    Left = 104
+    Top = 168
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'id_login'
         ParamType = ptInput
       end>
   end

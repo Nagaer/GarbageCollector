@@ -7,9 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdBaseComponent, IdComponent, IdUDPBase,
   IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, generics.collections, order_interface,data_module
   ,order_class, Vcl.StdCtrls,IBX.IBTable, driver_class,driver_interface,panel_driver,
-  Vcl.ExtCtrls,Panel_vehicle,vehicle_class,vehicle_interface;
+  Vcl.ExtCtrls,Panel_vehicle,vehicle_class,vehicle_interface,statuses;
  const
-  ignore_status = [7,8,9];
+  ignore_status = [status_done,status_cancel,9];
 type
   TElem = (Order,Vehicle,Driver);
   TForm_abstract_operator = class(TForm)

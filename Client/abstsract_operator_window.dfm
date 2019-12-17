@@ -17,7 +17,7 @@ object Form_abstract_operator: TForm_abstract_operator
   TextHeight = 13
   object IdUDPServer1: TIdUDPServer
     Bindings = <>
-    DefaultPort = 0
+    DefaultPort = 11000
     OnUDPRead = IdUDPServer1UDPRead
     Left = 256
     Top = 136

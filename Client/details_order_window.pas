@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, data_module, Vcl.StdCtrls, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, data_module, Vcl.StdCtrls, Vcl.Buttons,
+  user_class,statuses;
 
 type
   Tform_Details_Order = class(TForm)
@@ -22,15 +23,18 @@ type
     BitBtn1: TBitBtn;
     label_id: TLabel;
     label_status: TLabel;
+    BitBtn_cancel: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn_cancelClick(Sender: TObject);
   private
     { Private declarations }
     const statusOnExit = 6;
   public
     { Public declarations }
     id_order:integer;
+    procedure set_status(status: integer);
   end;
 
 var
@@ -40,12 +44,10 @@ implementation
 
 {$R *.dfm}
 
-procedure Tform_Details_Order.BitBtn1Click(Sender: TObject);
-var who_driver:integer;
+procedure   Tform_Details_Order.set_status(status: Integer);
+var who_driver : integer;
 begin
-    //Если мы нажали на эту кнопочку, то статус заказа теперь не комильфо
-    // Edit order
-    dm.QOrder_By_Id.ParamByName('ID_ORDER').Value := id_order;
+      dm.QOrder_By_Id.ParamByName('ID_ORDER').Value := id_order;
     dm.QOrder_By_Id.Open;
     who_driver := dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value;
     dm.QOrder_By_Id.Close;
@@ -54,7 +56,7 @@ begin
 
     ParamByName('ID_ORDER').AsInteger := id_order;
     ParamByName('ID_WORKERS').AsInteger:= who_driver;
-    ParamByName('NEW_STATUS').AsInteger:=  7;
+    ParamByName('NEW_STATUS').AsInteger:=  status;
 
     // Execute the procedure
     if not Transaction.InTransaction then
@@ -64,11 +66,21 @@ begin
     end;
     dm.open_all;
 end;
+procedure Tform_Details_Order.BitBtn_cancelClick(Sender: TObject);
+begin
+     set_status(status_cancel);
+end;
+
+procedure Tform_Details_Order.BitBtn1Click(Sender: TObject);
+begin
+    set_status(status_done);
+end;
 
 procedure Tform_Details_Order.FormCreate(Sender: TObject);
 begin
     Width := trunc(screen.Width/3);
     Height := trunc(screen.Height/2);
+    bitbtn_cancel.Visible := dm.user.get_role = manager;
 end;
 
 procedure Tform_Details_Order.FormShow(Sender: TObject);

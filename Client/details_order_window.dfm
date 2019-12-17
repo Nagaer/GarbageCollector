@@ -179,8 +179,8 @@ object form_Details_Order: Tform_Details_Order
     Caption = 'label_status'
   end
   object BitBtn1: TBitBtn
-    Left = 8
-    Top = 304
+    Left = 32
+    Top = 311
     Width = 153
     Height = 25
     Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100' '#1079#1072#1082#1072#1079
@@ -195,5 +195,23 @@ object form_Details_Order: Tform_Details_Order
     TabOrder = 0
     Visible = False
     OnClick = BitBtn1Click
+  end
+  object BitBtn_cancel: TBitBtn
+    Left = 224
+    Top = 311
+    Width = 153
+    Height = 25
+    Caption = #1054#1090#1084#1077#1085#1080#1090#1100' '#1079#1072#1082#1072#1079
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    Kind = bkCancel
+    NumGlyphs = 2
+    ParentFont = False
+    TabOrder = 1
+    Visible = False
+    OnClick = BitBtn_cancelClick
   end
 end

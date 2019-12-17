@@ -121,8 +121,6 @@ object Login_Form: TLogin_Form
     Font.Style = []
     ParentFont = False
     TabOrder = 4
-    Text = 
-      'D:\Delphi Collector\GarbageCollector\FREIGHT_TAXI_actualest_chan' +
-      'ges.FDB'
+    Text = 'C:\Users\dupel\firebird_db\FREIGHT_TAXI_actualest_changes.FDB'
   end
 end

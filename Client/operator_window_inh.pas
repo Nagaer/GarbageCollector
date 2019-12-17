@@ -28,7 +28,7 @@ type
      //procedure add();override;
      procedure update_interface(elem : TElem);override;
      procedure redraw;
-     procedure update;
+     procedure update;override;
 
       procedure PanelDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);override;
@@ -53,6 +53,7 @@ uses add_order_window;
 
 procedure TForm_inh_operator.update;
 begin
+  inherited;
   update_orders;
   update_drivers;
 end;

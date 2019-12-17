@@ -30,6 +30,7 @@ implementation
 
 {$R *.dfm}
     //192.168.43.115
+    //212.192.146.102
     //C:\Users\Ibrag\Desktop\Delphi\Programms\FREIGHT_TAXI_actual_changes.FDB
     //C:\Users\dupel\firebird_db\FREIGHT_TAXI_actualest_changes.FDB
 uses Manager_window, operator_window_inh, common_db;

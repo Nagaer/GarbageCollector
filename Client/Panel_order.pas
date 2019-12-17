@@ -137,6 +137,7 @@ begin
   form_Details_Order := Tform_Details_Order.Create(Application);
   form_Details_Order.id_order := order.get_id;
   form_Details_Order.showmodal;
+  getParentForm(self).Update;
 end;
 
 

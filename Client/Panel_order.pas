@@ -74,17 +74,26 @@ begin
      //dod := copy(dod, 2, d_length-1);
      dod := copy(dod, 1, d_length-3);
      caption := order.get_customer + ' ' + dod;
-     if (order.get_status = 2) then begin
-         color := RGB(250, 128, 114); //Salmon (Red)
+     if (order.get_status = 0) then begin
+         color := RGB(102, 205, 170); //LawnGreen (Green)
      end
-     else if (order.get_status = 1) then begin
-         color := RGB(240, 230, 140); //Khaki (Yellow)
+     else if (order.get_status = 2) then begin
+          color := RGB(240, 230, 140); //Khaki (Yellow)
+     end
+     else if (order.get_status = 3) then begin
+          color := RGB(250, 128, 114); //Salmon (Red)
+     end
+     else if (order.get_status = 4) then begin
+          color := RGB(220, 20, 60); //Crimson (Red)
+     end
+     else if (order.get_status = 5) then begin
+          color := RGB(139, 0, 0); //DarkRed
      end
      else if (order.get_status = 6) then begin
-         color := clPurple; //Khaki (Yellow)
+         color := RGB(238, 130, 238); //Violet (Purple)
      end
      else begin
-         color := RGB(102, 205, 170); //LawnGreen (Green)
+         color := clPurple;
      end;
 end;
 

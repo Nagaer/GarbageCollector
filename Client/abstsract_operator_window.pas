@@ -9,7 +9,7 @@ uses
   ,order_class, Vcl.StdCtrls,IBX.IBTable, driver_class,driver_interface,panel_driver,
   Vcl.ExtCtrls,Panel_vehicle,vehicle_class,vehicle_interface;
  const
-  ignore_status = [8,9];
+  ignore_status = [7,8,9];
 type
   TElem = (Order,Vehicle,Driver);
   TForm_abstract_operator = class(TForm)

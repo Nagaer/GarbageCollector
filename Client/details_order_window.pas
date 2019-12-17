@@ -21,6 +21,7 @@ type
     label_price: TLabel;
     BitBtn1: TBitBtn;
     label_id: TLabel;
+    label_status: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
@@ -53,7 +54,7 @@ begin
 
     ParamByName('ID_ORDER').AsInteger := id_order;
     ParamByName('ID_WORKERS').AsInteger:= who_driver;
-    ParamByName('NEW_STATUS').AsInteger:=  8;
+    ParamByName('NEW_STATUS').AsInteger:=  7;
 
     // Execute the procedure
     if not Transaction.InTransaction then
@@ -61,7 +62,7 @@ begin
     ExecProc;
     Transaction.Commit;
     end;
-
+    dm.open_all;
 end;
 
 procedure Tform_Details_Order.FormCreate(Sender: TObject);
@@ -141,6 +142,33 @@ begin
     end
     else begin
         form_Details_Order.label_operator.Caption := 'Оператор: отсутствует';
+    end;
+    if order_status=0 then begin
+      form_Details_Order.label_status.Caption := 'Заказ создан, но не распределён';
+    end
+    else if order_status=2 then begin
+      form_Details_Order.label_status.Caption := 'Заказ распределён водителю';
+    end
+    else if order_status=3 then begin
+      form_Details_Order.label_status.Caption := 'Заказ просмотрен водителем';
+    end
+    else if order_status=4 then begin
+      form_Details_Order.label_status.Caption := 'Водитель приступил к выполнению заказа';
+    end
+    else if order_status=5 then begin
+      form_Details_Order.label_status.Caption := 'Водитель прибыл на место';
+    end
+    else if order_status=6 then begin
+      form_Details_Order.label_status.Caption := 'Водитель завершил работу над заказом';
+    end
+    else if order_status=7 then begin
+      form_Details_Order.label_status.Caption := 'Завершение заказа подтвеждено оператором';
+    end
+    else if order_status=8 then begin
+      form_Details_Order.label_status.Caption := 'Заказ отменён';
+    end
+    else begin
+      form_Details_Order.label_status.Caption := 'Ошибка со статусом заказа';
     end;
 
     if order_status=statusOnExit then begin

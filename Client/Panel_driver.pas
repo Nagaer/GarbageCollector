@@ -61,7 +61,7 @@ procedure TPanel_driver.put_details;
 begin
      //panel_info.caption := 'id: '+ intTostr(driver.get_id) + ' status: ' + intTostr(driver.get_status);
      panel_info.caption := driver.get_name + ' ' + driver.get_surname[1] + '.';
-     panel_info.Color := RGB(148, 0, 211); //DarkViolet (Purple)
+     panel_info.Color := RGB(0, 191, 255); //DeepSkyBlue (Blue)
 end;
 
 

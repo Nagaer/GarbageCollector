@@ -282,8 +282,8 @@ begin
     label_surname.Text := dm.QDrivers.FieldByName('SURNAME').Value;
     label_exp.Text := dm.QDrivers.FieldByName('EXPERIENCE').Value;
     dtp_DOB.DateTime := dm.QDrivers.FieldByName('DOB').AsDateTime;
-    label_login.Text := dm.QOperators.FieldByName('LOGIN').Value;
-    label_password.Text := dm.QOperators.FieldByName('PASSWORD_').Value;
+    label_login.Text := dm.QDrivers.FieldByName('LOGIN').Value;
+    label_password.Text := dm.QDrivers.FieldByName('PASSWORD_').Value;
     showmodal;
   end;
 
@@ -309,8 +309,8 @@ begin
     label_surname.Text := dm.QManagers.FieldByName('SURNAME').Value;
     label_exp.Text := dm.QManagers.FieldByName('EXPERIENCE').Value;
     dtp_DOB.DateTime := dm.QManagers.FieldByName('DOB').AsDateTime;
-    label_login.Text := dm.QOperators.FieldByName('LOGIN').Value;
-    label_password.Text := dm.QOperators.FieldByName('PASSWORD_').Value;
+    label_login.Text := dm.QManagers.FieldByName('LOGIN').Value;
+    label_password.Text := dm.QManagers.FieldByName('PASSWORD_').Value;
     showmodal;
   end;
   if form_Add_Worker.ModalResult = mrOk then  begin

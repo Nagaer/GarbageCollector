@@ -25,39 +25,6 @@ object dm_add: Tdm_add
         ParamType = ptInput
       end>
   end
-  object spAdd_Worker: TIBStoredProc
-    Database = dm_db.IBDatabase_edit
-    Transaction = dm_db.IBTransaction_edit
-    StoredProcName = 'ADD_WORKER'
-    Left = 136
-    Top = 232
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'ROLE_'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'EXPERIENCE'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'DOB'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftWideString
-        Name = 'SURNAME'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftWideString
-        Name = 'NAME'
-        ParamType = ptInput
-      end>
-  end
   object spEdit_Car: TIBStoredProc
     Database = dm_db.IBDatabase_edit
     Transaction = dm_db.IBTransaction_edit
@@ -126,6 +93,16 @@ object dm_add: Tdm_add
       item
         DataType = ftWideString
         Name = 'NAME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'LOGIN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PASSWORD_'
         ParamType = ptInput
       end>
   end
@@ -241,6 +218,49 @@ object dm_add: Tdm_add
         DataType = ftInteger
         Name = 'RESULT'
         ParamType = ptOutput
+      end>
+  end
+  object spAdd_Worker: TIBStoredProc
+    Database = dm_db.IBDatabase_edit
+    Transaction = dm_db.IBTransaction_edit
+    StoredProcName = 'ADD_WORKER'
+    Left = 144
+    Top = 264
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'ROLE_'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'EXPERIENCE'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DOB'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SURNAME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'NAME'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'LOGIN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'PASSWORD_'
+        ParamType = ptInput
       end>
   end
 end

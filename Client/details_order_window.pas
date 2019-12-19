@@ -49,7 +49,10 @@ var who_driver : integer;
 begin
       dm.QOrder_By_Id.ParamByName('ID_ORDER').Value := id_order;
     dm.QOrder_By_Id.Open;
-    who_driver := dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value;
+    if varisnull(dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value) then
+      who_driver := 0
+      else
+      who_driver  := dm.QOrder_By_Id.FieldByName('WHO_DRIVER').Value;
     dm.QOrder_By_Id.Close;
     with dm.spEdit_Order_Status do
     begin
@@ -79,7 +82,7 @@ end;
 procedure Tform_Details_Order.FormCreate(Sender: TObject);
 begin
     Width := trunc(screen.Width/3);
-    Height := trunc(screen.Height/2);
+    Height := trunc(screen.Height/1.5);
     bitbtn_cancel.Visible := dm.user.get_role = manager;
 end;
 

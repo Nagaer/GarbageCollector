@@ -135,6 +135,10 @@ object Form_manager: TForm_manager
         Title.Font.Name = 'Verdana'
         Title.Font.Style = []
         Visible = True
+      end
+      item
+        Expanded = False
+        Visible = True
       end>
   end
   object DBGrid_cars: TDBGrid

@@ -9,12 +9,12 @@ uses
 type
   Tdm_add = class(TDataModule)
     spAdd_Car: TIBStoredProc;
-    spAdd_Worker: TIBStoredProc;
     spEdit_Car: TIBStoredProc;
     spEdit_Worker: TIBStoredProc;
     spAdd_Address: TIBStoredProc;
     spAdd_Order: TIBStoredProc;
     spAdd_Customer: TIBStoredProc;
+    spAdd_Worker: TIBStoredProc;
   private
     { Private declarations }
   public

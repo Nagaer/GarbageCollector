@@ -1,9 +1,12 @@
 ﻿unit Panel_driver;
 
 interface
-uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, colored_panel_class,
-  driver_class,driver_interface, details_worker_window;
+uses  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IdBaseComponent, IdComponent, IdUDPBase,
+  IdUDPClient, IdUDPServer, IdGlobal, IdSocketHandle, generics.collections, order_interface,data_module
+  ,order_class, Vcl.StdCtrls,IBX.IBTable, driver_class,driver_interface,
+  Vcl.ExtCtrls,Panel_vehicle,vehicle_class,vehicle_interface,statuses,colored_panel_class,
+  details_worker_window, panel_order, Generics.Defaults;
 
 
 type TPanel_driver = Class(TPanel,TDriver_Interface,IInterface)
@@ -59,7 +62,6 @@ end;
 
 procedure TPanel_driver.put_details;
 begin
-     //panel_info.caption := 'id: '+ intTostr(driver.get_id) + ' status: ' + intTostr(driver.get_status);
      panel_info.caption := driver.get_name + ' ' + driver.get_surname[1] + '.';
      panel_info.Color := RGB(0, 191, 255); //DeepSkyBlue (Blue)
 end;
@@ -73,8 +75,23 @@ end;
 procedure TPanel_driver.redraw;
 var
   i : integer;
+  //sortedArray : TList<TControl>;
+  //comparer : TListSortCompare;
 begin
     with panel_queue do
+    //sortedArray :=  TList<TControl>.create;
+    //for i := 0 to ControlCount - 1 do begin
+   //   sortedArray.add(controls[i]);
+   // end;
+    // sort
+     // comparer :=  TListSortCompare
+     // TList<TControl>.sort(sortedArray, TDelegatedComparer<TControl>.Construct(
+     // function(const Left, Right: TControl): Integer
+     //  begin
+     //   Result := (Left as TPanel_order).get_date_delivery <
+     //             (Right as TPanel_order).get_date_delivery;
+     //  end));
+
       for i := 0 to ControlCount - 1 do begin
         controls[i].Top := 0;
         if ControlCount < maxOrdersCount then begin
